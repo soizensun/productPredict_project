@@ -1,4 +1,4 @@
-package com.example.productpredict.HTTPController
+package com.example.productpredict.httpController
 
 import com.example.productpredict.model.Plot
 import retrofit2.Call
