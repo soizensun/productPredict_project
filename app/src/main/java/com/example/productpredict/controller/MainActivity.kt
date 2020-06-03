@@ -27,9 +27,9 @@ class MainActivity : AppCompatActivity() {
         val retrofit = RetrofitClient.instance
         jsonApi = retrofit!!.create(AnApi::class.java)
 
-        val plotsList = ArrayList<Plot>()
-        plotsList.add(Plot("1", "11111"))
-        plotsList.add(Plot("2", "22222"))
+//        val plotsList = ArrayList<Plot>()
+//        plotsList.add(Plot("1", "11111"))
+//        plotsList.add(Plot("2", "22222"))
 
         recyclePlot.setHasFixedSize(true)
         recyclePlot.layoutManager = LinearLayoutManager(this)
@@ -44,9 +44,8 @@ class MainActivity : AppCompatActivity() {
                 if(response.isSuccessful){
                     Log.i("http response success", response.body().toString())
                     plotList = response.body() as ArrayList<Plot>
-                    Log.i("list", plotsList.toString())
-//                    displayList.addAll(plotsList)
-                    recyclePlot.adapter = plotsList?.let { PlotAdapter(plotList) }
+                    Log.i("list", plotList.toString())
+                    recyclePlot.adapter = plotList?.let { PlotAdapter(plotList) }
                     return
                 }
             }

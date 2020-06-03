@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
     private var outInstance: Retrofit? = null
-    var instance : Retrofit? = null
+    val instance : Retrofit?
         get(){
         if(outInstance == null)
             outInstance = Retrofit.Builder()
