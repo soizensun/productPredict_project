@@ -20,17 +20,15 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/idTV"
-                android:text="id"
-                android:textAppearance="?android:textAppearanceMedium"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:id="@+id/plotNameTV"
                 android:text="plotName"
+                android:gravity="center"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
                 android:textAppearance="?android:textAppearanceLarge"
-                android:layout_below="@id/idTV"/>
+                android:background="@drawable/shape_alist_bg"/>
 
         </RelativeLayout>
     </LinearLayout>

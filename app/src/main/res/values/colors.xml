@@ -2,8 +2,10 @@
 <resources>
     <color name="colorPrimary">#CD5C5C</color>
     <color name="colorPrimaryDark">#CD5C5C</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#676767</color>
     <color name="whiteText">#FFFFFF</color>
     <color name="blackText">#858585</color>
-    <color name="midpink">#FFA29D</color>
+    <color name="blackText1">#555555</color>
+    <color name="midPink">#FFA29D</color>
+    <color name="softPink">#FDEDEC</color>
 </resources>

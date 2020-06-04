@@ -3,6 +3,8 @@ package com.example.productpredict.controller
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.productpredict.R
 import com.example.productpredict.model.Plot
@@ -44,11 +46,43 @@ class MainActivity : AppCompatActivity() {
                 if(response.isSuccessful){
                     Log.i("http response success", response.body().toString())
                     plotList = response.body() as ArrayList<Plot>
-                    Log.i("list", plotList.toString())
-                    recyclePlot.adapter = plotList?.let { PlotAdapter(plotList) }
+                    displayList.addAll(plotList)
+                    recyclePlot.adapter = plotList?.let { PlotAdapter(displayList) }
                     return
                 }
             }
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.search_menu, menu)
+        val searchItem = menu?.findItem(R.id.search_bar)
+        if (searchItem != null){
+            val searchView : SearchView = searchItem.actionView as SearchView
+
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    return true
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    displayList.clear()
+                    if(newText!!.isNotEmpty()){
+                        val search = newText.toLowerCase()
+                        Log.i("ffff", search)
+                        plotList.forEach {
+                            if(it.plot_name.toLowerCase().contains(search)){
+                                displayList.add(it)
+                            }
+                        }
+                    }else{
+                        displayList.addAll(plotList)
+                    }
+                    recyclePlot.adapter?.notifyDataSetChanged()
+                    return true
+                }
+            })
+        }
+        return super.onCreateOptionsMenu(menu)
     }
 }
