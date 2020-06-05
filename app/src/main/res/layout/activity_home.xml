@@ -7,688 +7,181 @@
     android:layout_height="match_parent"
     tools:context=".controller.HomeActivity"
     >
-    <ScrollView
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="-66dp"
-        tools:layout_editor_absoluteY="0dp">
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/topLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/shape_hotpink_bg">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="ประเมินผลผลิต"
+                    android:textColor="@color/whiteText"
+                    android:textSize="25dp" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="20dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ขื่อเเปลง"
+                    android:textColor="@color/whiteText"
+                    android:textSize="15dp"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:layout_marginBottom="10dp"
+                >
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="0dp"
+                    android:layout_toStartOf="@+id/search_btn"
+                    android:layout_toLeftOf="@+id/search_btn"
+                    android:background="@drawable/shape_white">
+                    <TextView
+                        android:id="@+id/plotName_TV"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textColor="@color/blackText"
+                        android:textSize="22dp" />
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/search_btn"
+                    android:layout_width="55dp"
+                    android:layout_height="54dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="0dp"
+                    android:background="@drawable/shape_midpink_btn"
+                    android:gravity="right"
+                    android:src="@drawable/baseline_search_white_18dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ประเภทผลผลิต"
+                    android:textColor="@color/whiteText"
+                    android:textSize="15dp"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:layout_marginBottom="18dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="0dp"
+                    android:layout_toStartOf="@+id/selectKind_BTN"
+                    android:layout_toLeftOf="@+id/selectKind_BTN"
+                    android:background="@drawable/shape_white">
+
+                    <TextView
+                        android:id="@+id/productKind_TV"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="เลือกประเภทผลผลิต"
+                        android:textColor="@color/blackText"
+                        android:textSize="22dp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/selectKind_BTN"
+                    android:layout_width="55dp"
+                    android:layout_height="54dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="0dp"
+                    android:background="@drawable/shape_midpink_btn"
+                    android:text="เลือก"
+                    android:textSize="15dp"
+                    android:textColor="@color/whiteText"/>
+
+            </RelativeLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="@drawable/shape_twotone_bg">
-            <LinearLayout
-                android:id="@+id/topLayout"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclePlot1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/shape_hotpink_bg">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="ประเมินผลผลิต"
-                        android:textColor="@color/whiteText"
-                        android:textSize="25dp" />
-                </LinearLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="20dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="ขื่อเเปลง"
-                            android:textColor="@color/whiteText"
-                            android:textSize="15dp"
-                            />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:paddingLeft="2dp"
-                    android:paddingRight="2dp"
-                    android:layout_marginBottom="10dp"
-                    >
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginBottom="0dp"
-                        android:layout_toStartOf="@+id/search_btn"
-                        android:layout_toLeftOf="@+id/search_btn"
-                        android:background="@drawable/shape_white">
-                        <TextView
-                            android:id="@+id/plotName_TV"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:textColor="@color/blackText"
-                            android:textSize="22dp" />
-                    </LinearLayout>
-
-                    <ImageButton
-                        android:id="@+id/search_btn"
-                        android:layout_width="55dp"
-                        android:layout_height="54dp"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginBottom="0dp"
-                        android:background="@drawable/shape_midpink_btn"
-                        android:gravity="right"
-                        android:src="@drawable/baseline_search_white_18dp" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="ประเภทผลผลิต"
-                        android:textColor="@color/whiteText"
-                        android:textSize="15dp"
-                        />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:paddingLeft="2dp"
-                    android:paddingRight="2dp"
-                    android:layout_marginBottom="18dp"
-                    >
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginBottom="0dp"
-                        android:layout_toStartOf="@+id/selectKind_BTN"
-                        android:layout_toLeftOf="@+id/selectKind_BTN"
-                        android:background="@drawable/shape_white">
-
-                        <TextView
-                            android:id="@+id/productKind_TV"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:text="เลือกประเภทผลผลิต"
-                            android:textColor="@color/blackText"
-                            android:textSize="22dp" />
-                    </LinearLayout>
-
-                    <Button
-                        android:id="@+id/selectKind_BTN"
-                        android:layout_width="55dp"
-                        android:layout_height="54dp"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginBottom="0dp"
-                        android:background="@drawable/shape_midpink_btn"
-                        android:text="เลือก"
-                        android:textSize="15dp"
-                        android:textColor="@color/whiteText"/>
-
-                </RelativeLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/secondLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:orientation="vertical"
-
-                android:background="@drawable/shape_midpink_bg">
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="3dp"
-                    >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="เส้นผ่านศูนย์กลางโคนท่อน"
-                        android:textColor="@color/blackText1"
-                        android:textSize="16dp"
-                        />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:paddingLeft="2dp"
-                    android:paddingRight="2dp"
-                    android:layout_marginBottom="10dp"
-                    >
-
-                    <LinearLayout
-                        android:id="@+id/a11"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="0dp"
-                        android:layout_marginRight="0dp"
-                        android:layout_marginBottom="0dp"
-                        android:layout_toStartOf="@+id/unit11"
-                        android:layout_toLeftOf="@+id/unit11">
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/tv111"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/shape_white"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/dbh_base_startTV"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:hint="จาก"
-                                android:textSize="23dp"
-                                android:inputType="numberDecimal|numberSigned">
-                            </com.google.android.material.textfield.TextInputEditText>
-                        </com.google.android.material.textfield.TextInputLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/unit11"
-                        android:layout_width="56dp"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginLeft="0dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="13dp"
-                        android:layout_marginRight="13dp"
-                        android:layout_marginBottom="0dp"
-                        android:layout_toStartOf="@+id/to1"
-                        android:layout_toLeftOf="@+id/to1">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:text="นิ้ว"
-                            android:textColor="@color/blackText1"
-                            android:textSize="22dp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/to1"
-                        android:layout_width="25dp"
-                        android:layout_height="7dp"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginTop="26dp"
-                        android:layout_marginBottom="26dp"
-                        android:layout_centerHorizontal="true"
-                        android:background="@drawable/shape_white">
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/a22"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginStart="21dp"
-                        android:layout_marginLeft="21dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="0dp"
-                        android:layout_marginRight="0dp"
-                        android:layout_marginBottom="0dp"
-                        android:layout_toStartOf="@+id/unit"
-                        android:layout_toLeftOf="@+id/unit"
-                        android:layout_toEndOf="@+id/to1"
-                        android:layout_toRightOf="@+id/to1">
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/shape_white"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/dbh_base_endTV"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:hint="ถึง"
-                                android:textSize="23dp"
-                                android:inputType="numberDecimal|numberSigned"></com.google.android.material.textfield.TextInputEditText>
-                        </com.google.android.material.textfield.TextInputLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/unit"
-                        android:layout_width="56dp"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginLeft="0dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginBottom="0dp">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:text="นิ้ว"
-                            android:textColor="@color/blackText1"
-                            android:textSize="22dp" />
-                    </LinearLayout>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginBottom="3dp"
-                    >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="เส้นผ่านศูนย์กลางปลายท่อน"
-                        android:textColor="@color/blackText1"
-                        android:textSize="16dp"
-                        />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginBottom="18dp"
-                    android:paddingLeft="2dp"
-                    android:paddingRight="2dp">
-
-                    <LinearLayout
-                        android:id="@+id/a1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="0dp"
-                        android:layout_marginRight="0dp"
-                        android:layout_marginBottom="0dp"
-                        android:layout_toStartOf="@+id/unit1"
-                        android:layout_toLeftOf="@+id/unit1">
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/tv11"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/shape_white"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/dbh_end_startTV"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:hint="จาก"
-                                android:textSize="23dp"
-                                android:inputType="numberDecimal|numberSigned"></com.google.android.material.textfield.TextInputEditText>
-                        </com.google.android.material.textfield.TextInputLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/unit1"
-                        android:layout_width="56dp"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginLeft="0dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="13dp"
-                        android:layout_marginRight="13dp"
-                        android:layout_marginBottom="0dp"
-                        android:layout_toStartOf="@+id/to"
-                        android:layout_toLeftOf="@+id/to">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:text="นิ้ว"
-                            android:textColor="@color/blackText1"
-                            android:textSize="22dp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/to"
-                        android:layout_width="25dp"
-                        android:layout_height="7dp"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="26dp"
-                        android:layout_marginBottom="26dp"
-                        android:background="@drawable/shape_white">
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/a2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginStart="21dp"
-                        android:layout_marginLeft="21dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="0dp"
-                        android:layout_marginRight="0dp"
-                        android:layout_marginBottom="0dp"
-                        android:layout_toStartOf="@+id/unit2"
-                        android:layout_toLeftOf="@+id/unit2"
-                        android:layout_toEndOf="@+id/to"
-                        android:layout_toRightOf="@+id/to">
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/shape_white"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/dbh_end_endTV"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:hint="ถึง"
-                                android:textSize="23dp"
-                                android:inputType="numberDecimal|numberSigned"></com.google.android.material.textfield.TextInputEditText>
-                        </com.google.android.material.textfield.TextInputLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/unit2"
-                        android:layout_width="56dp"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginLeft="0dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginBottom="0dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:text="นิ้ว"
-                            android:textColor="@color/blackText1"
-                            android:textSize="22dp" />
-                    </LinearLayout>
-                </RelativeLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="10dp"
-                    >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="ความยาวท่อน"
-                        android:textColor="@color/blackText1"
-                        android:textSize="15dp"
-                        />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:paddingLeft="2dp"
-                    android:paddingRight="2dp"
-                    android:layout_marginBottom="10dp"
-                    >
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginBottom="0dp"
-                        android:layout_toStartOf="@+id/unit3"
-                        android:layout_toLeftOf="@+id/unit3"
-                        android:background="@drawable/shape_white">
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/shape_white"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/log_long"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:inputType="numberDecimal|numberSigned"
-                                android:textSize="23dp">
-                            </com.google.android.material.textfield.TextInputEditText>
-                        </com.google.android.material.textfield.TextInputLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/unit3"
-                        android:layout_width="56dp"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginLeft="0dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginBottom="0dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:text="เมตร"
-                            android:textColor="@color/blackText1"
-                            android:textSize="22dp" />
-                    </LinearLayout>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="ราคา"
-                        android:textColor="@color/blackText1"
-                        android:textSize="15dp"
-                        />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:paddingLeft="2dp"
-                    android:paddingRight="2dp"
-                    android:layout_marginBottom="30dp"
-                    >
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginBottom="0dp"
-                        android:layout_toStartOf="@+id/unit4"
-                        android:layout_toLeftOf="@+id/unit4"
-                        android:background="@drawable/shape_white">
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/shape_white"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/log_price"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:textSize="23dp"
-                                android:inputType="numberDecimal|numberSigned">
-                            </com.google.android.material.textfield.TextInputEditText>
-                        </com.google.android.material.textfield.TextInputLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/unit4"
-                        android:layout_width="56dp"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginLeft="0dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginBottom="0dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:text="บาท"
-                            android:textColor="@color/blackText1"
-                            android:textSize="22dp" />
-                    </LinearLayout>
-
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    >
-                    <Button
-                        android:id="@+id/calulate_BTN"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:text="คำนวณ"
-                        android:textColor="@color/whiteText"
-                        android:textSize="23dp"
-                        android:background="@drawable/shape_cal_btn"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginBottom="18dp">
-                    </Button>
-                </RelativeLayout>
-            </LinearLayout>
-
+                android:layout_height="match_parent" />
         </LinearLayout>
-    </ScrollView>
+
+
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

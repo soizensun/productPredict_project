@@ -6,15 +6,37 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.productpredict.R
+import com.example.productpredict.controller.adapter.TestAdapter
 import com.example.productpredict.model.MyPreference
+import com.example.productpredict.model.Plot
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        val plotsList = ArrayList<Plot>()
+        plotsList.add(Plot("1", "11111"))
+        plotsList.add(Plot("2", "22222"))
+        plotsList.add(Plot("2", "22222"))
+        plotsList.add(Plot("2", "22222"))
+        plotsList.add(Plot("2", "22222"))
+        plotsList.add(Plot("2", "22222"))
+        plotsList.add(Plot("2", "22222"))
+        plotsList.add(Plot("2", "22222"))
+        plotsList.add(Plot("2", "22222"))
+        plotsList.add(Plot("2", "22222"))
+        plotsList.add(Plot("2", "22222"))
+        plotsList.add(Plot("2", "22222"))
+
+        recyclePlot1.setHasFixedSize(true)
+        recyclePlot1.layoutManager = LinearLayoutManager(this)
+        recyclePlot1.adapter = TestAdapter(plotsList)
 
         val myPreference = MyPreference(this)
 
