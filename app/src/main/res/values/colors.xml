@@ -5,7 +5,8 @@
     <color name="colorAccent">#676767</color>
     <color name="whiteText">#FFFFFF</color>
     <color name="blackText">#858585</color>
-    <color name="blackText1">#555555</color>
-    <color name="midPink">#FFA29D</color>
-    <color name="softPink">#FDEDEC</color>
+    <color name="blackText1">#313131</color>
+    <color name="softblack">#9E9E9E</color>
+    <color name="midPink">#F9C1BF</color>
+    <color name="softPink">#F9E4E3</color>
 </resources>
