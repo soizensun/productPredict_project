@@ -6,7 +6,7 @@ import retrofit2.http.GET
 
 interface AnApi {
 
-    // get plot url
-    @get:GET("project/eucapre/api_plot.php")
-    val plots: Call<List<Plot>>
+  // get plot url
+  @get:GET("project/eucapre/api_plot.php")
+  val plots: Call<List<Plot>>
 }

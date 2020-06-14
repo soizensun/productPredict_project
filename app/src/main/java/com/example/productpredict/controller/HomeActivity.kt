@@ -1,44 +1,24 @@
 package com.example.productpredict.controller
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
-import androidx.recyclerview.widget.LinearLayoutManager
+import android.widget.EditText
 import com.example.productpredict.R
-import com.example.productpredict.controller.adapter.ProductInputAdapter
-import com.example.productpredict.model.MyPreference
-import com.example.productpredict.model.Plot
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
-    var count = 0
-    val listItem = ArrayList<Int>()
+
+    @SuppressLint("InflateParams")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-
-        listItem.add(count)
-
-        val testList = ArrayList<Int>()
-        testList.add(0)
-        testList.add(2)
-        testList.add(1)
-
-//        val plotsList = ArrayList<Plot>()
-//        plotsList.add(Plot("1", "11111"))
-//        plotsList.add(Plot("2", "22222"))
-//        plotsList.add(Plot("2", "22222"))
-
-//        recyclePlot1.setHasFixedSize(true)
-//        recyclePlot1.layoutManager = LinearLayoutManager(this)
-//        recyclePlot1.adapter = ProductInputAdapter(listItem, testList)
-
-        val myPreference = MyPreference(this)
+//        val myPreference = MyPreference(this)
 
         val selectPlot = intent.getStringExtra("selectPlot")
         if (selectPlot != null)  plotName_TV.text = selectPlot
@@ -51,29 +31,44 @@ class HomeActivity : AppCompatActivity() {
             plotName_TV.text = "เลือกแปลง"
         }
 
-        addField_BTN1.setOnClickListener{
+        addField_BTN.setOnClickListener{
             val inflater : LayoutInflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            var rowView = inflater.inflate(R.layout.a_product_input_listitem, null)
-            parent_linear_layout.addView(rowView, parent_linear_layout.getChildCount() - 1)
+            val rowView = inflater.inflate(R.layout.a_product_input_listitem, null)
+            parent_linear_layout.addView(rowView, parent_linear_layout.childCount - 1)
         }
-
-
 
         plotName_TV.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }
+
         search_btn.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }
 
+        calulate_BTN.setOnClickListener {
+            val childCount = parent_linear_layout.childCount
+
+            for (i in 0 until childCount - 1){
+                val thisChild = parent_linear_layout.getChildAt(i)
+
+                val dbh_base_start_value = thisChild.findViewById<EditText>(R.id.dbh_base_startTV).text.toString()
+                val dbh_base_end_value = thisChild.findViewById<EditText>(R.id.dbh_base_endTV).text.toString()
+
+                val dbh_end_start_value = thisChild.findViewById<EditText>(R.id.dbh_end_startTV).text.toString()
+                val dbh_end_end_value = thisChild.findViewById<EditText>(R.id.dbh_end_endTV).text.toString()
+
+                val length_start_value = thisChild.findViewById<EditText>(R.id.length_startTV).text.toString()
+                val length_end_value = thisChild.findViewById<EditText>(R.id.length_endTV).text.toString()
+
+                if (dbh_base_start_value == ""){
+                    thisChild.setBackgroundResource(R.drawable.shape_softpink_error_bg)
+                }
+
+                Log.i("fffff", dbh_base_start_value)
+            }
+
+        }
+
     }
-
-//    fun addNewListItem(){
-//        count += 1
-//        listItem.add(count)
-//        recyclePlot1.adapter?.notifyDataSetChanged()
-//    }
-
-
 
 }
