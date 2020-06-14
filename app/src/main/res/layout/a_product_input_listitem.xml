@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="24dp"
             >
             <TextView
                 android:layout_width="wrap_content"
@@ -30,8 +30,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:paddingLeft="2dp"
-            android:paddingRight="2dp"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
             android:layout_marginBottom="5dp"
             >
 
@@ -70,8 +70,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_marginRight="11dp"
-        android:layout_marginLeft="11dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
         android:orientation="vertical"
 
         android:background="@drawable/shape_midpink_bg">
@@ -159,7 +159,7 @@
                     android:gravity="center"
                     android:text="นิ้ว"
                     android:textColor="@color/blackText1"
-                    android:textSize="22dp" />
+                    android:textSize="18dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -230,7 +230,7 @@
                     android:gravity="center"
                     android:text="นิ้ว"
                     android:textColor="@color/blackText1"
-                    android:textSize="22dp" />
+                    android:textSize="18dp" />
             </LinearLayout>
         </RelativeLayout>
 
@@ -313,7 +313,7 @@
                     android:gravity="center"
                     android:text="นิ้ว"
                     android:textColor="@color/blackText1"
-                    android:textSize="22dp" />
+                    android:textSize="18dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -385,7 +385,7 @@
                     android:gravity="center"
                     android:text="นิ้ว"
                     android:textColor="@color/blackText1"
-                    android:textSize="22dp" />
+                    android:textSize="18dp" />
             </LinearLayout>
         </RelativeLayout>
 
@@ -470,7 +470,7 @@
                     android:paddingLeft="5dp"
                     android:text="เมตร"
                     android:textColor="@color/blackText1"
-                    android:textSize="22dp" />
+                    android:textSize="18dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -531,18 +531,18 @@
                 android:layout_marginLeft="0dp"
                 android:layout_marginTop="0dp"
                 android:layout_marginBottom="0dp"
-                android:layout_marginEnd="4dp"
-                android:layout_marginRight="4dp">
+                android:layout_marginEnd="0dp"
+                android:layout_marginRight="0dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:paddingLeft="5dp"
+                    android:paddingLeft="0dp"
                     android:text="เมตร"
                     android:textColor="@color/blackText1"
-                    android:textSize="22dp" />
+                    android:textSize="18dp" />
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
@@ -566,8 +566,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:paddingLeft="2dp"
-        android:paddingRight="2dp"
+        android:paddingLeft="6dp"
+        android:paddingRight="6dp"
         android:layout_marginBottom="18dp"
         >
 

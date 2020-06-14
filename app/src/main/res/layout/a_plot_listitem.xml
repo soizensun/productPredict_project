@@ -24,6 +24,7 @@
                 android:id="@+id/plotNameTV"
                 android:text="plotName"
                 android:gravity="center"
+                android:transitionName="plotNameTransition"
                 android:layout_marginRight="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="2dp"

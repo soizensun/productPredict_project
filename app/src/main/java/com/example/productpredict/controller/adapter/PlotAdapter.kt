@@ -1,9 +1,15 @@
 package com.example.productpredict.controller.adapter
 
+import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Intent
+import android.os.Build
+import android.util.Pair
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
+import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.productpredict.R
 import com.example.productpredict.controller.HomeActivity
@@ -20,6 +26,7 @@ class PlotAdapter(private val plotList: List<Plot>) : RecyclerView.Adapter<PlotA
     return plotList.size
   }
 
+  @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
   override fun onBindViewHolder(holder: PlotViewHolder, position: Int) {
     val context = holder.itemView.context
 
@@ -30,7 +37,17 @@ class PlotAdapter(private val plotList: List<Plot>) : RecyclerView.Adapter<PlotA
       val intent = Intent(context, HomeActivity::class.java)
 
       intent.putExtra("selectPlot", currentSelectItem)
-      context.startActivity(intent)
+
+
+      val p1 = Pair.create<View, String>(holder.plotNameTV , holder.plotNameTV.transitionName)
+
+      val options = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        ActivityOptions.makeSceneTransitionAnimation(context as Activity?,  p1)
+      } else {
+        TODO("VERSION.SDK_INT < LOLLIPOP")
+      }
+
+      context.startActivity(intent, options.toBundle())
 
 //      val myPreference = MyPreference(context)
 //      myPreference.setCurrentPlotPreference(currentSelectItem)
