@@ -29,7 +29,13 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="2dp"
                 android:textAppearance="?android:textAppearanceLarge"
-                android:background="@drawable/shape_alist_bg"/>
+                android:background="@drawable/shape_a_plot_list_bg"/>
+
+            <TextView
+                android:id="@+id/plotIDTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"/>
 
         </RelativeLayout>
     </LinearLayout>

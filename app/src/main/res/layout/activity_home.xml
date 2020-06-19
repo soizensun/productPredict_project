@@ -20,7 +20,7 @@
             android:id="@+id/topLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/shape_hotpink_bg"
+            android:background="@drawable/shape_homeactivity_header2_bg"
             android:orientation="vertical">
 
             <LinearLayout
@@ -35,75 +35,8 @@
                     android:gravity="center"
                     android:text="ประเมินผลผลิต"
                     android:textColor="@color/whiteText"
-                    android:textSize="25dp" />
+                    android:textSize="22dp" />
             </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="20dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ขื่อเเปลง"
-                    android:textColor="@color/whiteText"
-                    android:textSize="15dp" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginBottom="18dp"
-                android:paddingLeft="2dp"
-                android:paddingRight="2dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="0dp"
-                    android:layout_toStartOf="@+id/search_btn"
-                    android:layout_toLeftOf="@+id/search_btn"
-                    android:background="@drawable/shape_white">
-
-                    <TextView
-                        android:id="@+id/plotName_TV"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:textColor="@color/blackText"
-                        android:transitionName="plotNameTransition"
-                        android:textSize="22dp" />
-                </LinearLayout>
-
-                <ImageButton
-                    android:id="@+id/search_btn"
-                    android:layout_width="55dp"
-                    android:layout_height="54dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="0dp"
-                    android:background="@drawable/shape_midpink_btn"
-                    android:clickable="true"
-                    android:gravity="right"
-                    android:src="@drawable/baseline_search_white_18dp" />
-            </RelativeLayout>
         </LinearLayout>
 
         <ScrollView
@@ -120,14 +53,86 @@
                 android:stretchColumns="100"
                 android:id="@+id/parent_linear_layout"
                 >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_homeactivity_header_bg"
+                    android:orientation="vertical">
 
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ขื่อเเปลง"
+                            android:textColor="@color/whiteText"
+                            android:textSize="15dp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="18dp"
+                        android:paddingLeft="2dp"
+                        android:paddingRight="2dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="0dp"
+                            android:layout_toStartOf="@+id/search_btn"
+                            android:layout_toLeftOf="@+id/search_btn"
+                            android:background="@drawable/shape_white">
+
+                            <TextView
+                                android:id="@+id/plotName_TV"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:textColor="@color/blackText"
+                                android:transitionName="plotNameTransition"
+                                android:textSize="22dp" />
+                        </LinearLayout>
+
+                        <ImageButton
+                            android:id="@+id/search_btn"
+                            android:layout_width="55dp"
+                            android:layout_height="54dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginBottom="0dp"
+                            android:background="@drawable/shape_search_plot_btn"
+                            android:clickable="true"
+                            android:gravity="right"
+                            android:src="@drawable/ic_search_black_24dp" />
+                    </RelativeLayout>
+                </LinearLayout>
                 <LinearLayout
                     xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:orientation="vertical"
-                    android:background="@drawable/shape_softpink_bg"
+                    android:background="@drawable/shape_a_product_input_list_bg"
                     >
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -169,8 +174,6 @@
                                 android:layout_marginEnd="10dp"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginBottom="0dp"
-                                android:layout_toStartOf="@+id/selectKind_BTN"
-                                android:layout_toLeftOf="@+id/selectKind_BTN"
                                 android:background="@drawable/shape_white">
 
                                 <Spinner
@@ -179,7 +182,8 @@
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
                                     android:textColor="@color/blackText"
-                                    android:layout_marginLeft="15dp" />
+                                    android:layout_marginLeft="15dp"
+                                    android:entries="@array/productKind"/>
                             </LinearLayout>
 
 
@@ -194,8 +198,7 @@
                         android:layout_marginRight="15dp"
                         android:layout_marginLeft="15dp"
                         android:orientation="vertical"
-
-                        android:background="@drawable/shape_midpink_bg">
+                        android:background="@drawable/shape_inner_layer_a_product_input_list_bg">
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
@@ -718,7 +721,7 @@
                                 app:layout_constraintTop_toTopOf="parent">
 
                                 <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/log_price"
+                                    android:id="@+id/price_TV"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:textSize="23dp"
@@ -765,8 +768,8 @@
                     android:textColor="#FFF"
                     android:text="เพิ่มประเภทผลผลิต"
                     android:paddingLeft="5dp"
-                    android:textSize="22dp"
-                    android:background="@drawable/shape_hotpink_btn"
+                    android:textSize="19dp"
+                    android:background="@drawable/shape_addmore_product_input_list_btn"
                     />
             </TableLayout>
 
@@ -781,13 +784,13 @@
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
-        android:backgroundTint="@color/midPink"
+        android:backgroundTint="@color/darkPurple"
         android:clickable="true"
         android:src="@drawable/ic_check_black_24dp"
-        app:backgroundTint="@color/midPink"
+        app:backgroundTint="@color/darkPurple"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:rippleColor="@color/midPink" />
+        app:rippleColor="@color/darkPurple" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">productPredict</string>
+
+    <string-array name="productKind">
+        <item>ไม้หนึ่ง</item>
+        <item>ไม้รวม</item>
+        <item>ไม้วีเนียร์</item>
+        <item>ไม้เสา</item>
+    </string-array>
 </resources>

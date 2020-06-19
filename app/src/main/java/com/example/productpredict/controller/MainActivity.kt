@@ -15,6 +15,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
@@ -71,7 +73,7 @@ class MainActivity : AppCompatActivity() {
                         val search = newText.toLowerCase()
                         Log.i("ffff", search)
                         plotList.forEach {
-                            if(it.plot_name.toLowerCase().contains(search)){
+                        if(it.plot_name.toLowerCase().contains(search)){
                                 displayList.add(it)
                             }
                         }

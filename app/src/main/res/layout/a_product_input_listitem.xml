@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@drawable/shape_softpink_bg"
+    android:background="@drawable/shape_a_product_input_list_bg"
     >
     <LinearLayout
         android:layout_width="match_parent"
@@ -58,7 +58,8 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:textColor="@color/blackText"
-                    android:layout_marginLeft="15dp" />
+                    android:layout_marginLeft="15dp"
+                    android:entries="@array/productKind"/>
             </LinearLayout>
 
 
@@ -73,8 +74,7 @@
         android:layout_marginRight="15dp"
         android:layout_marginLeft="15dp"
         android:orientation="vertical"
-
-        android:background="@drawable/shape_midpink_bg">
+        android:background="@drawable/shape_inner_layer_a_product_input_list_bg">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -597,7 +597,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/log_price"
+                    android:id="@+id/price_TV"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="23dp"

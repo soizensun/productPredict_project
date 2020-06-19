@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
-import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.productpredict.R
 import com.example.productpredict.controller.HomeActivity
@@ -31,13 +30,15 @@ class PlotAdapter(private val plotList: List<Plot>) : RecyclerView.Adapter<PlotA
     val context = holder.itemView.context
 
     holder.plotNameTV.text = plotList[position].plot_name
+    holder.plotIDTV.text = plotList[position].id
 
     holder.itemView.setOnClickListener {
-      val currentSelectItem = holder.plotNameTV.text.toString()
+      val currentSelectPlotName = holder.plotNameTV.text.toString()
+      val currentSelectPlotID = holder.plotIDTV.text.toString()
       val intent = Intent(context, HomeActivity::class.java)
 
-      intent.putExtra("selectPlot", currentSelectItem)
-
+      intent.putExtra("selectPlotName", currentSelectPlotName)
+      intent.putExtra("selectPlotID",  currentSelectPlotID)
 
       val p1 = Pair.create<View, String>(holder.plotNameTV , holder.plotNameTV.transitionName)
 
@@ -58,6 +59,7 @@ class PlotAdapter(private val plotList: List<Plot>) : RecyclerView.Adapter<PlotA
   class PlotViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 //    var id = itemView.idTV
     var plotNameTV = itemView.plotNameTV
+    var plotIDTV = itemView.plotIDTV
   }
 
 }
