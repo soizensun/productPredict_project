@@ -8,16 +8,20 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.EditText
-import android.widget.Spinner
+import android.widget.*
 import com.example.productpredict.R
+import com.example.productpredict.httpController.AnApi
+import com.example.productpredict.httpController.RetrofitClient
+import com.example.productpredict.model.Product
 import com.example.productpredict.model.ProductRequirement
+import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_home.*
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Response
+import javax.security.auth.callback.Callback
 
 class HomeActivity : AppCompatActivity() {
-
     private var productRequirement = ProductRequirement()
 
     @SuppressLint("InflateParams")
@@ -67,9 +71,11 @@ class HomeActivity : AppCompatActivity() {
 
         calulate_BTN.setOnClickListener {
             val childCount = parent_linear_layout.childCount
+            var count = 1
 
             for (i in 1 until childCount - 1){
                 val thisChild = parent_linear_layout.getChildAt(i)
+                count += 1
 
                 val productKind_SP_value = thisChild.findViewById<Spinner>(R.id.productKind_SP).selectedItem.toString()
 
@@ -84,15 +90,22 @@ class HomeActivity : AppCompatActivity() {
 
                 val price_value = thisChild.findViewById<EditText>(R.id.price_TV).text.toString()
 
-                if (dbh_base_start_value == "" || dbh_base_end_value == "" || dbh_end_start_value == "" ||
+
+                if (selectPlotID == null){
+                    Toasty.warning(this, "กรุณาเลือกแปลง", Toast.LENGTH_SHORT, true).show()
+                }
+                else if (dbh_base_start_value == "" || dbh_base_end_value == "" || dbh_end_start_value == "" ||
                     dbh_end_end_value == "" || length_start_value == "" || length_end_value == "" ||
                     price_value == "" || productKind_SP_value == ""){
                     thisChild.setBackgroundResource(R.drawable.shape_softpink_error_bg)
+
+                    Toasty.warning(this, "กรอกข้อมูลให้ครบถ้วน", Toast.LENGTH_SHORT, true).show()
                 }
-                else{
-                    var tmp = "[[1],[ไม้1,ไม้รวม],[2.5,0],[20,2.5],[2.5,0],[20,20],[2,0.1],[2.8,2.8],[1400,1000]]"
+                else {
+                    val productKind_SP_value_new = "\"" + productKind_SP_value + "\""
+
                     productRequirement.setPlotID(selectPlotID)
-                    productRequirement.addProductKindList(productKind_SP_value)
+                    productRequirement.addProductKindList(productKind_SP_value_new)
                     productRequirement.addDbhBaseStartList(dbh_base_start_value)
                     productRequirement.addDbhBaseEndList(dbh_base_end_value)
                     productRequirement.addDbhEndStartList(dbh_end_start_value)
@@ -101,8 +114,21 @@ class HomeActivity : AppCompatActivity() {
                     productRequirement.addLengthEndList(length_end_value)
                     productRequirement.addPriceList(price_value)
 
-                    Log.i("prrrrr", productRequirement.toString())
+                    if (count == childCount - 1) {
+                        val intent = Intent(this, ResultActivity::class.java)
 
+                        intent.putExtra("selectPlotID", selectPlotID)
+                        intent.putExtra("productKindList", productRequirement.productKindList.toString())
+                        intent.putExtra("dbhBaseStartList", productRequirement.dbhBaseStartList.toString())
+                        intent.putExtra("dbhBaseEndList", productRequirement.dbhBaseEndList.toString())
+                        intent.putExtra("dbhEndStartList", productRequirement.dbhEndStartList.toString())
+                        intent.putExtra("dbhEndEndList", productRequirement.dbhEndEndList.toString())
+                        intent.putExtra("lengthStartList", productRequirement.lengthStartList.toString())
+                        intent.putExtra("lengthEndList", productRequirement.lengthEndList.toString())
+                        intent.putExtra("priceList", productRequirement.priceList.toString())
+
+                        startActivity(intent)
+                    }
                 }
 
             }
@@ -111,4 +137,8 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
+    fun onDelete(v: View) {
+        parent_linear_layout.removeView(v.parent as View)
+        Log.i("close", "close view")
+    }
 }

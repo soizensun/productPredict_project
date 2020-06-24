@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.productpredict.R
 import com.example.productpredict.model.Plot
@@ -87,4 +88,5 @@ class MainActivity : AppCompatActivity() {
         }
         return super.onCreateOptionsMenu(menu)
     }
+
 }

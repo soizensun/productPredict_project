@@ -14,18 +14,18 @@ import android.util.Log
 class ProductRequirement() {
     private var plotID: String = ""
 
-    private var productKindList= arrayListOf<String>()
+    var productKindList= arrayListOf<String>()
 
-    private var dbhBaseStartList= arrayListOf<String>()
-    private var dbhBaseEndList= arrayListOf<String>()
+    var dbhBaseStartList= arrayListOf<String>()
+    var dbhBaseEndList= arrayListOf<String>()
 
-    private var dbhEndStartList= arrayListOf<String>()
-    private var dbhEndEndList= arrayListOf<String>()
+    var dbhEndStartList= arrayListOf<String>()
+    var dbhEndEndList= arrayListOf<String>()
 
-    private var lengthStartList= arrayListOf<String>()
-    private var lengthEndList= arrayListOf<String>()
+    var lengthStartList= arrayListOf<String>()
+    var lengthEndList= arrayListOf<String>()
 
-    private var priceList = arrayListOf<String>()
+    var priceList = arrayListOf<String>()
 
     fun setPlotID(plotID: String){
         this.plotID = plotID
