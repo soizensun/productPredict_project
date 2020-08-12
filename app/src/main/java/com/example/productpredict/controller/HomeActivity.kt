@@ -29,6 +29,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+
 //        val myPreference = MyPreference(this)
 
         val typeListOption = arrayOf("ไม้หนึ่ง", "ไม้รวม", "ไม้วีเนียร์", "ไม้เสา")
@@ -130,11 +131,8 @@ class HomeActivity : AppCompatActivity() {
                         startActivity(intent)
                     }
                 }
-
             }
-
         }
-
     }
 
     fun onDelete(v: View) {

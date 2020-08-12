@@ -4,89 +4,96 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
-import android.widget.SearchView
-import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import com.example.productpredict.R
-import com.example.productpredict.model.Plot
-import com.example.productpredict.controller.adapter.PlotAdapter
 import com.example.productpredict.httpController.AnApi
 import com.example.productpredict.httpController.RetrofitClient
+import com.example.productpredict.model.GroupPlotName
+import com.example.productpredict.model.MainPlotName
+import com.example.productpredict.model.SubPlotName
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.*
-import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var jsonApi: AnApi
-    private var plotList: ArrayList<Plot> = ArrayList()
-    private var displayList: ArrayList<Plot> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val retrofit = RetrofitClient.instance
-        jsonApi = retrofit!!.create(AnApi::class.java)
+        jsonApi = RetrofitClient.instance!!.create(AnApi::class.java)
 
-//        val plotsList = ArrayList<Plot>()
-//        plotsList.add(Plot("1", "11111"))
-//        plotsList.add(Plot("2", "22222"))
+        var groupPlotNameSelected : String = ""
+        var mainPlotNameSelected : String = ""
+        var subPlotNameSelected : String = ""
 
-        recyclePlot.setHasFixedSize(true)
-        recyclePlot.layoutManager = LinearLayoutManager(this)
-//        recyclePlot.adapter = PlotAdapter(plotsList)
-
-        jsonApi.plots.enqueue(object: Callback<List<Plot>> {
-            override fun onFailure(call: Call<List<Plot>>?, t: Throwable) {
-                Log.i("http response fail", t.toString())
-            }
-
-            override fun onResponse(call: Call<List<Plot>>, response: Response<List<Plot>>) {
+        jsonApi.groupPlotName.enqueue(object: Callback<GroupPlotName> {
+            override fun onFailure(call: Call<GroupPlotName>?, t: Throwable) {}
+            override fun onResponse(call: Call<GroupPlotName>, response: Response<GroupPlotName>) {
                 if(response.isSuccessful){
-                    Log.i("http response success", response.body().toString())
-                    plotList = response.body() as ArrayList<Plot>
-                    displayList.addAll(plotList)
-                    recyclePlot.adapter = plotList?.let { PlotAdapter(displayList) }
+                    val groupNameList = response.body() as GroupPlotName
+                    val options : ArrayList<String>  = groupNameList.group_name
+                    options.add("--กรุณาเลือกกลุ่มแปลง--")
+                    groupPlot_SP.adapter = ArrayAdapter<String>(this@MainActivity, android.R.layout.simple_list_item_1, options)
+                    groupPlot_SP.setSelection(options.size - 1)
+
+                    groupPlot_SP.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                        override fun onNothingSelected(parent: AdapterView<*>?) {}
+                        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                            groupPlotNameSelected = options[position]
+                             if(groupPlotNameSelected != "--กรุณาเลือกกลุ่มแปลง--"){
+                                 jsonApi.mainPlotName(groupPlotNameSelected).enqueue(object : Callback<MainPlotName>{
+                                     override fun onFailure(call: Call<MainPlotName>, t: Throwable) {}
+                                     override fun onResponse(call: Call<MainPlotName>, response: Response<MainPlotName>) {
+                                         val mainNameList = response.body() as MainPlotName
+                                         val options  = mainNameList.main_name
+                                         options.add("--กรุณาเลือกแปลงหลัก--")
+                                         mainPlot_SP.adapter = ArrayAdapter<String>(this@MainActivity, android.R.layout.simple_list_item_1, options)
+                                         mainPlot_SP.setSelection(options.size - 1)
+
+                                         mainPlot_SP.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                                             override fun onNothingSelected(parent: AdapterView<*>?) {}
+                                             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                                                 mainPlotNameSelected = options[position]
+                                                 if(mainPlotNameSelected != "--กรุณาเลือกแปลงหลัก--"){
+                                                     jsonApi.subPlotName(groupPlotNameSelected, mainPlotNameSelected).enqueue(object : Callback<SubPlotName>{
+                                                         override fun onFailure(call: Call<SubPlotName>, t: Throwable) {}
+                                                         override fun onResponse(call: Call<SubPlotName>, response: Response<SubPlotName>) {
+                                                             val subPlotNameList = response.body() as SubPlotName
+                                                             val options  = subPlotNameList.sub_id
+                                                             options.add("--กรุณาเลือกแปลงหลัก--")
+                                                             subPlot_SP.adapter = ArrayAdapter<String>(this@MainActivity, android.R.layout.simple_list_item_1, options)
+                                                             subPlot_SP.setSelection(options.size - 1)
+
+                                                             subPlot_SP.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+                                                                 override fun onNothingSelected(parent: AdapterView<*>?) {}
+                                                                 override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                                                                     subPlotNameSelected = options[position]
+                                                                 }
+                                                             }
+                                                         }
+                                                     })
+                                                 }
+                                             }
+                                         }
+                                     }
+                                 })
+                             }
+                        }
+                    }
                     return
                 }
             }
         })
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.search_menu, menu)
-        val searchItem = menu?.findItem(R.id.search_bar)
-        if (searchItem != null){
-            val searchView : SearchView = searchItem.actionView as SearchView
-
-            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-                override fun onQueryTextSubmit(query: String?): Boolean {
-                    return true
-                }
-
-                override fun onQueryTextChange(newText: String?): Boolean {
-                    displayList.clear()
-                    if(newText!!.isNotEmpty()){
-                        val search = newText.toLowerCase()
-                        Log.i("ffff", search)
-                        plotList.forEach {
-                        if(it.plot_name.toLowerCase().contains(search)){
-                                displayList.add(it)
-                            }
-                        }
-                    }else{
-                        displayList.addAll(plotList)
-                    }
-                    recyclePlot.adapter?.notifyDataSetChanged()
-                    return true
-                }
-            })
+        confirmPlotInput_BTN.setOnClickListener{
+            Log.i("resault", "$groupPlotNameSelected $mainPlotNameSelected $subPlotNameSelected")
+//            var tmp =
+//            if()
         }
-        return super.onCreateOptionsMenu(menu)
     }
-
 }
