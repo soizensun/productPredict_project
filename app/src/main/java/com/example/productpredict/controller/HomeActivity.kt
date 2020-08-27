@@ -3,6 +3,7 @@ package com.example.productpredict.controller
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -29,21 +30,33 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-
 //        val myPreference = MyPreference(this)
 
         val typeListOption = arrayOf("ไม้หนึ่ง", "ไม้รวม", "ไม้วีเนียร์", "ไม้เสา")
-        val selectPlotName = intent.getStringExtra("selectPlotName")
-        val selectPlotID  = intent.getStringExtra("selectPlotID")
 
-        if (selectPlotName != null)  plotName_TV.text = selectPlotName
+        val groupPlotNameSelected = intent.getStringExtra("groupPlotNameSelected")
+        val mainPlotNameSelected  = intent.getStringExtra("mainPlotNameSelected")
+        val subPlotNameSelected  = intent.getStringExtra("subPlotNameSelected")
+        val gardenIdList  = intent.getStringArrayListExtra("gardenIdList")
+
+        if (groupPlotNameSelected != null &&
+            mainPlotNameSelected != null &&
+            subPlotNameSelected != null)   {
+            plotName_TV.text = "$groupPlotNameSelected  $mainPlotNameSelected"
+
+            var myDrawable : Drawable = getResources().getDrawable(R.drawable.ic_baseline_more_vert_24);
+            search_btn.setImageDrawable(myDrawable)
+            search_btn.setOnClickListener {
+                // open show detail dialog
+                Log.i("fff", "ffffff")
+            }
+        }
         else {
-            // use sharePreference
-//            if (myPreference.getCurrentPlotPreference() == "") plotName_TV.text = "เลือกแปลง"
-//            else plotName_TV.text = myPreference.getCurrentPlotPreference()
-
-            // don't use sharePreference
             plotName_TV.text = "เลือกแปลง"
+            search_btn.setOnClickListener {
+                startActivity(Intent(this, MainActivity::class.java))
+            }
+
         }
 
         addField_BTN.setOnClickListener{
@@ -52,23 +65,20 @@ class HomeActivity : AppCompatActivity() {
             parent_linear_layout.addView(rowView, parent_linear_layout.childCount - 1)
         }
 
-        plotName_TV.setOnClickListener {
+        plotInput.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }
 
-        search_btn.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
-        }
 
-        productKind_SP.adapter = ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, typeListOption)
-        productKind_SP.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-
-            }
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                Log.i("spinner", typeListOption.get(position))
-            }
-        }
+//        productKind_SP.adapter = ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, typeListOption)
+//        productKind_SP.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+//            override fun onNothingSelected(parent: AdapterView<*>?) {
+//
+//            }
+//            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+//                Log.i("spinner", typeListOption.get(position))
+//            }
+//        }
 
         calulate_BTN.setOnClickListener {
             val childCount = parent_linear_layout.childCount
@@ -92,10 +102,10 @@ class HomeActivity : AppCompatActivity() {
                 val price_value = thisChild.findViewById<EditText>(R.id.price_TV).text.toString()
 
 
-                if (selectPlotID == null){
-                    Toasty.warning(this, "กรุณาเลือกแปลง", Toast.LENGTH_SHORT, true).show()
-                }
-                else if (dbh_base_start_value == "" || dbh_base_end_value == "" || dbh_end_start_value == "" ||
+//                if (selectPlotID == null){
+//                    Toasty.warning(this, "กรุณาเลือกแปลง", Toast.LENGTH_SHORT, true).show()
+//                }
+                if (dbh_base_start_value == "" || dbh_base_end_value == "" || dbh_end_start_value == "" ||
                     dbh_end_end_value == "" || length_start_value == "" || length_end_value == "" ||
                     price_value == "" || productKind_SP_value == ""){
                     thisChild.setBackgroundResource(R.drawable.shape_softpink_error_bg)
@@ -105,7 +115,7 @@ class HomeActivity : AppCompatActivity() {
                 else {
                     val productKind_SP_value_new = "\"" + productKind_SP_value + "\""
 
-                    productRequirement.setPlotID(selectPlotID)
+//                    productRequirement.setPlotID(selectPlotID)
                     productRequirement.addProductKindList(productKind_SP_value_new)
                     productRequirement.addDbhBaseStartList(dbh_base_start_value)
                     productRequirement.addDbhBaseEndList(dbh_base_end_value)
@@ -118,7 +128,7 @@ class HomeActivity : AppCompatActivity() {
                     if (count == childCount - 1) {
                         val intent = Intent(this, ResultActivity::class.java)
 
-                        intent.putExtra("selectPlotID", selectPlotID)
+//                        intent.putExtra("selectPlotID", selectPlotID)
                         intent.putExtra("productKindList", productRequirement.productKindList.toString())
                         intent.putExtra("dbhBaseStartList", productRequirement.dbhBaseStartList.toString())
                         intent.putExtra("dbhBaseEndList", productRequirement.dbhBaseEndList.toString())
@@ -135,8 +145,8 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    fun onDelete(v: View) {
-        parent_linear_layout.removeView(v.parent as View)
-        Log.i("close", "close view")
-    }
+//    fun onDelete(v: View) {
+//        parent_linear_layout.removeView(v.parent as View)
+//        Log.i("close", "close view")
+//    }
 }

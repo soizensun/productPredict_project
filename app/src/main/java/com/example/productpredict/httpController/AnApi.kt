@@ -26,12 +26,23 @@ interface AnApi {
     groupPlotName: String
   ): Call<MainPlotName>
 
-  @GET("http://eng.forest.ku.ac.th/project/eucapre/sel_sub.php")
+  @GET("project/eucapre/sel_sub.php")
   fun subPlotName(
     @Query("x")
-    groupPlotName: String ,
+    groupPlotName: String,
     @Query("y")
     mainPlotName: String
   ): Call<SubPlotName>
+
+  @GET("project/eucapre/sel_date.php")
+  fun surveyDatePlotName(
+    @Query("x")
+    groupPlotName: String,
+    @Query("y")
+    mainPlotName: String,
+    @Query("z")
+    subPlotName: String
+  ): Call<SurveyDatePlotName>
+
 
 }
