@@ -1,6 +1,8 @@
 package com.example.productpredict.httpController
 
 import com.example.productpredict.model.*
+import com.google.gson.JsonElement
+import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -10,11 +12,14 @@ interface AnApi {
   @get:GET("project/eucapre/api_plot.php/")
   val plots: Call<List<Plot>>
 
-  @GET("project/eucapre/utilize4.php")
+  @get:GET("project/eucapre/sel_spec.php")
+  val spec: Call<SpecProduct>
+
+  @GET("project/eucapre/utilize5.php")
   fun getProducts(
     @Query("p")
     productSpec: String
-  ): Call<Product>
+  ): Call<JsonObject>
 
   // get group name plot
   @get:GET("project/eucapre/sel_groupname.php")

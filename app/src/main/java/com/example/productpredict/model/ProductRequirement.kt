@@ -1,7 +1,5 @@
 package com.example.productpredict.model
 
-import android.util.Log
-
 //http://eng.forest.ku.ac.th/project/eucapre/utilize4.php?p=[[1],[ไม้1,ไม้รวม],[2.5,0],[20,2.5],[2.5,0],[20,20],[2,0.1],[2.8,2.8],[1400,1000]]
 //http://eng.forest.ku.ac.th/project/eucapre/utilize4.php?p=
 // [[1],
@@ -14,7 +12,8 @@ import android.util.Log
 class ProductRequirement() {
     private var plotID: String = ""
 
-    var productKindList= arrayListOf<String>()
+    var mainSpecIdList = arrayListOf<String>()
+    var moreSpecNameList= arrayListOf<String>()
 
     var dbhBaseStartList= arrayListOf<String>()
     var dbhBaseEndList= arrayListOf<String>()
@@ -25,18 +24,17 @@ class ProductRequirement() {
     var lengthStartList= arrayListOf<String>()
     var lengthEndList= arrayListOf<String>()
 
-    var priceList = arrayListOf<String>()
 
     fun setPlotID(plotID: String){
         this.plotID = plotID
     }
 
-    fun addProductKindList(productKind: String){
-        this.productKindList.add(productKind)
+    fun addMainProductKindList(specId: String) {
+        this.mainSpecIdList.add(specId)
     }
 
-    fun addPriceList(price: String){
-        priceList.add(price)
+    fun addProductKindList(productKind: String){
+        this.moreSpecNameList.add(productKind)
     }
 
     fun addDbhBaseStartList(dbhBaseStart: String){
@@ -64,8 +62,10 @@ class ProductRequirement() {
     }
 
     override fun toString(): String {
-        return "ProductRequirement(plotID=$plotID, productKindList=$productKindList, dbhBaseStartList=$dbhBaseStartList, dbhBaseEndList=$dbhBaseEndList, dbhEndStartList=$dbhEndStartList, dbhEndEndList=$dbhEndEndList, lengthStartList=$lengthStartList, lengthEndList=$lengthEndList, priceList=$priceList)"
+        return "ProductRequirement(plotID=$plotID, productKindList=$moreSpecNameList, dbhBaseStartList=$dbhBaseStartList, dbhBaseEndList=$dbhBaseEndList, dbhEndStartList=$dbhEndStartList, dbhEndEndList=$dbhEndEndList, lengthStartList=$lengthStartList, lengthEndList=$lengthEndList)"
     }
+
+
 
 }
 

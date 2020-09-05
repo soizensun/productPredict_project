@@ -29,7 +29,8 @@
             android:layout_alignParentRight="true"
             android:gravity="bottom"
             android:layout_marginLeft="16dp"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:layout_marginBottom="3dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -37,21 +38,16 @@
                 android:text="ประเภทผลผลิต"
                 android:textColor="@color/blackText1"
                 android:textSize="15dp"
-                android:layout_gravity="bottom"
-                />
-
+                android:layout_gravity="bottom"/>
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
-
-
-
         </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="55dp"
             android:paddingLeft="6dp"
             android:paddingRight="6dp"
             android:layout_marginBottom="5dp"
@@ -71,18 +67,22 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="0dp"
                 android:background="@drawable/shape_white">
-
-                <Spinner
-                    android:id="@+id/productKind_SP"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:textColor="@color/blackText"
-                    android:layout_marginLeft="15dp"
-                    android:entries="@array/productKind"/>
+                    android:background="@drawable/shape_white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/product_kindTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="ชื่อประเภทผลผลิต"
+                        android:textSize="17dp">
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
-
-
         </RelativeLayout>
     </LinearLayout>
 
@@ -93,6 +93,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginRight="15dp"
         android:layout_marginLeft="15dp"
+        android:layout_marginBottom="18dp"
         android:orientation="vertical"
         android:background="@drawable/shape_inner_layer_a_product_input_list_bg">
 
@@ -101,25 +102,21 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="3dp"
-            >
+            android:layout_marginBottom="3dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="เส้นผ่านศูนย์กลางโคนท่อน"
                 android:textColor="@color/blackText1"
-                android:textSize="16dp"
-                />
+                android:textSize="15dp" />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="55dp"
             android:paddingLeft="2dp"
             android:paddingRight="2dp"
-            android:layout_marginBottom="15dp"
-            >
-
+            android:layout_marginBottom="8dp">
             <LinearLayout
                 android:id="@+id/a11"
                 android:layout_width="match_parent"
@@ -136,7 +133,6 @@
                 android:layout_marginBottom="0dp"
                 android:layout_toStartOf="@+id/unit11"
                 android:layout_toLeftOf="@+id/unit11">
-
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tv111"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -145,13 +141,12 @@
                     android:background="@drawable/shape_white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
-
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/dbh_base_startTV"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="จาก"
-                        android:textSize="18dp"
+                        android:textSize="17dp"
                         android:inputType="numberDecimal|numberSigned">
                     </com.google.android.material.textfield.TextInputEditText>
                 </com.google.android.material.textfield.TextInputLayout>
@@ -171,7 +166,6 @@
                 android:layout_marginBottom="0dp"
                 android:layout_toStartOf="@+id/to1"
                 android:layout_toLeftOf="@+id/to1">
-
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -184,7 +178,7 @@
 
             <LinearLayout
                 android:id="@+id/to1"
-                android:layout_width="25dp"
+                android:layout_width="15dp"
                 android:layout_height="7dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentBottom="true"
@@ -218,13 +212,12 @@
                     android:background="@drawable/shape_white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
-
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/dbh_base_endTV"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="ถึง"
-                        android:textSize="18dp"
+                        android:textSize="17dp"
                         android:inputType="numberDecimal|numberSigned"></com.google.android.material.textfield.TextInputEditText>
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
@@ -258,24 +251,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:layout_marginBottom="3dp"
-            >
+            android:layout_marginBottom="3dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="เส้นผ่านศูนย์กลางปลายท่อน"
                 android:textColor="@color/blackText1"
-                android:textSize="16dp"
-                />
+                android:textSize="15dp" />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginBottom="15dp"
+            android:layout_height="55dp"
+            android:layout_marginBottom="8dp"
             android:paddingLeft="2dp"
             android:paddingRight="2dp">
-
             <LinearLayout
                 android:id="@+id/a111"
                 android:layout_width="match_parent"
@@ -292,7 +282,6 @@
                 android:layout_marginBottom="0dp"
                 android:layout_toStartOf="@+id/unit1"
                 android:layout_toLeftOf="@+id/unit1">
-
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
@@ -300,13 +289,12 @@
                     android:background="@drawable/shape_white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
-
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/dbh_end_startTV"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="จาก"
-                        android:textSize="18dp"
+                        android:textSize="17dp"
                         android:inputType="numberDecimal|numberSigned"></com.google.android.material.textfield.TextInputEditText>
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
@@ -325,7 +313,6 @@
                 android:layout_marginBottom="0dp"
                 android:layout_toStartOf="@+id/to"
                 android:layout_toLeftOf="@+id/to">
-
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -338,7 +325,7 @@
 
             <LinearLayout
                 android:id="@+id/to"
-                android:layout_width="25dp"
+                android:layout_width="15dp"
                 android:layout_height="7dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentBottom="true"
@@ -378,7 +365,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="ถึง"
-                        android:textSize="18dp"
+                        android:textSize="17dp"
                         android:inputType="numberDecimal|numberSigned"></com.google.android.material.textfield.TextInputEditText>
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
@@ -413,20 +400,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:layout_marginBottom="3dp"
-            >
+            android:layout_marginBottom="3dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ความยาวท่อน"
                 android:textColor="@color/blackText1"
-                android:textSize="16dp"
-                />
+                android:textSize="15dp" />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="55dp"
             android:layout_marginBottom="15dp"
             android:paddingLeft="2dp"
             android:paddingRight="2dp">
@@ -462,7 +447,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="จาก"
-                        android:textSize="18dp"
+                        android:textSize="17dp"
                         android:inputType="numberDecimal|numberSigned"></com.google.android.material.textfield.TextInputEditText>
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
@@ -481,7 +466,6 @@
                 android:layout_marginBottom="0dp"
                 android:layout_toStartOf="@+id/to3"
                 android:layout_toLeftOf="@+id/to3">
-
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -495,7 +479,7 @@
 
             <LinearLayout
                 android:id="@+id/to3"
-                android:layout_width="25dp"
+                android:layout_width="15dp"
                 android:layout_height="7dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentBottom="true"
@@ -534,7 +518,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="ถึง"
-                        android:textSize="18dp"
+                        android:textSize="17dp"
                         android:inputType="numberDecimal|numberSigned"></com.google.android.material.textfield.TextInputEditText>
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
@@ -566,91 +550,4 @@
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
-
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="10dp"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ราคา"
-            android:textColor="@color/blackText1"
-            android:textSize="15dp"
-            />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:paddingLeft="6dp"
-        android:paddingRight="6dp"
-        android:layout_marginBottom="18dp"
-        >
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="0dp"
-            android:layout_toStartOf="@+id/unit4"
-            android:layout_toLeftOf="@+id/unit4"
-            android:background="@drawable/shape_white">
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/shape_white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/price_TV"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textSize="23dp"
-                    android:inputType="numberDecimal|numberSigned">
-                </com.google.android.material.textfield.TextInputEditText>
-            </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/unit4"
-            android:layout_width="56dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="0dp">
-
-            <TextView
-                android:id="@+id/test"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="บาท"
-                android:textColor="@color/blackText1"
-                android:textSize="22dp" />
-        </LinearLayout>
-
-    </RelativeLayout>
 </LinearLayout>

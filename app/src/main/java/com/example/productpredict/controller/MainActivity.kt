@@ -2,6 +2,7 @@ package com.example.productpredict.controller
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -84,9 +85,9 @@ class MainActivity : AppCompatActivity() {
                                                                              override fun onFailure(call: Call<SurveyDatePlotName>, t: Throwable) {}
                                                                              @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
                                                                              override fun onResponse(call: Call<SurveyDatePlotName>, response: Response<SurveyDatePlotName>) {
-                                                                                 val surveyDateList = ArrayList<SurveyDataForAdapter>()
+                                                                                 val surveyDateList = ArrayList<SurveyDataRenderModel>()
                                                                                  for (i in 0 until response.body()?.date!!.size) {
-                                                                                     surveyDateList.add(SurveyDataForAdapter(response.body()!!.date[i], response.body()!!.garden_id[i]))
+                                                                                     surveyDateList.add(SurveyDataRenderModel(response.body()!!.date[i], response.body()!!.garden_id[i]))
                                                                                  }
 //                                                                                 recycleSurveyDate.adapter = SurveyDateAdapter(surveyDateList)
                                                                                  surveyTable.removeAllViews()
@@ -102,9 +103,13 @@ class MainActivity : AppCompatActivity() {
                                                                                          if (rowView.flagTV.text == "select" ) {
                                                                                              rowView.surveyDateTV.background = normalBackground
                                                                                              rowView.flagTV.text = "unselect"
+                                                                                             rowView.surveyDateTV.setTextColor(
+                                                                                                 Color.parseColor("#313131"))
                                                                                          } else{
                                                                                              rowView.surveyDateTV.background = selectedBackground
                                                                                              rowView.flagTV.text = "select"
+                                                                                             rowView.surveyDateTV.setTextColor(
+                                                                                                 Color.parseColor("#FFFFFF"))
                                                                                          }
                                                                                      }
                                                                                  }
@@ -127,7 +132,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-
 
         confirmPlotInput_BTN.setOnClickListener{
             val childCount = surveyTable.childCount

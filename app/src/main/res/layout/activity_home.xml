@@ -13,19 +13,16 @@
         android:orientation="vertical"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp">
-
         <LinearLayout
             android:id="@+id/topLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/shape_homeactivity_header2_bg"
             android:orientation="vertical">
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -37,7 +34,7 @@
             </LinearLayout>
         </LinearLayout>
 
-        <ScrollView
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fadeScrollbars="true"
@@ -49,7 +46,6 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:stretchColumns="1">
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -61,7 +57,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="10dp">
-
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -94,8 +89,6 @@
                             android:layout_toStartOf="@+id/search_btn"
                             android:layout_toLeftOf="@+id/search_btn"
                             android:background="@drawable/shape_white">
-
-
                             <TextView
                                 android:id="@+id/plotName_TV"
                                 android:layout_width="match_parent"
@@ -105,8 +98,6 @@
                                 android:textColor="@color/blackText"
                                 android:textSize="18dp"
                                 android:transitionName="plotNameTransition" />
-
-
                         </LinearLayout>
 
                         <ImageButton
@@ -132,147 +123,47 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="18dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ประเภทผลผลิตหลัก"
+                            android:textColor="@color/blackText1"
+                            android:textSize="16dp"/>
+                    </RelativeLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginLeft="4dp"
-                        android:layout_marginRight="4dp"
-                        android:orientation="horizontal">
-                        <CheckBox
-                            android:layout_margin="2dp"
-                            android:layout_width="wrap_content"
+                        android:layout_height="200dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="20dp"
+                        >
+                        <androidx.core.widget.NestedScrollView
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:background="@drawable/shape_inner_layer_a_product_input_list_bg"
-                            android:text="ไม้3 (ไม้ฝืน)">
-                        </CheckBox>
-                        <CheckBox
-                            android:layout_margin="2dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:background="@drawable/shape_inner_layer_a_product_input_list_bg"
-                            android:text="ไม้2">
-                        </CheckBox>
-                        <CheckBox
-                            android:layout_margin="2dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:background="@drawable/shape_inner_layer_a_product_input_list_bg"
-                            android:text="ไม้1">
-                        </CheckBox>
+                            android:fillViewport="true"
+                            android:scrollbars = "vertical"
+                            android:fadeScrollbars="true"
+                            >
+                            <TableLayout
+                                android:id="@+id/productTypeTable"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:stretchColumns="1">
+                            </TableLayout>
+                        </androidx.core.widget.NestedScrollView>
                     </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginLeft="4dp"
-                        android:layout_marginRight="4dp"
-                        android:orientation="horizontal">
-                        <CheckBox
-                            android:layout_margin="2dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:background="@drawable/shape_inner_layer_a_product_input_list_bg"
-                            android:text="ไม้คำ้ยัน">
-                        </CheckBox>
-                        <CheckBox
-                            android:layout_margin="2dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:background="@drawable/shape_inner_layer_a_product_input_list_bg"
-                            android:text="ไม้แปรรูป">
-                        </CheckBox>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginLeft="4dp"
-                        android:layout_marginRight="4dp"
-                        android:orientation="horizontal">
-                        <CheckBox
-                            android:layout_margin="2dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:background="@drawable/shape_inner_layer_a_product_input_list_bg"
-                            android:text="ไม้แปรรูป ยาว">
-                        </CheckBox>
-                        <CheckBox
-                            android:layout_margin="2dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:background="@drawable/shape_inner_layer_a_product_input_list_bg"
-                            android:text="ไม้วีเนียร์">
-                        </CheckBox>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginLeft="4dp"
-                        android:layout_marginRight="4dp"
-                        android:orientation="horizontal">
-                        <CheckBox
-                            android:layout_margin="2dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:background="@drawable/shape_inner_layer_a_product_input_list_bg"
-                            android:text="ไม้เสาเข็ม ขนาด 4 นิ้ว * 4 เมตร">
-                        </CheckBox>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginLeft="4dp"
-                        android:layout_marginRight="4dp"
-                        android:orientation="horizontal">
-                        <CheckBox
-                            android:layout_margin="2dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:background="@drawable/shape_inner_layer_a_product_input_list_bg"
-                            android:text="ไม้เสาเข็ม ขนาด 5 นิ้ว * 5 เมตร">
-                        </CheckBox>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginLeft="4dp"
-                        android:layout_marginRight="4dp"
-                        android:orientation="horizontal">
-                        <CheckBox
-                            android:layout_margin="2dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:background="@drawable/shape_inner_layer_a_product_input_list_bg"
-                            android:text="ไม้เสาเข็ม ขนาด 6 นิ้ว * 6 เมตร">
-                        </CheckBox>
-                    </LinearLayout>
-
-
                 </LinearLayout>
 
                 <Button
-                    android:layout_marginRight="30dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginRight="21dp"
+                    android:layout_marginLeft="21dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="16dp"
                     android:id="@+id/addField_BTN"
                     android:layout_width="155dp"
                     android:layout_height="60dp"
@@ -280,11 +171,9 @@
                     android:background="@drawable/shape_addmore_product_input_list_btn"
                     android:text="เพิ่มประเภทผลผลิต"
                     android:textColor="#FFF"
-                    android:textSize="19dp" />
+                    android:textSize="17dp" />
             </TableLayout>
-
-        </ScrollView>
-
+        </androidx.core.widget.NestedScrollView>
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -301,7 +190,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:rippleColor="@color/darkPurple" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
