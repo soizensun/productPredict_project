@@ -25,8 +25,8 @@ import kotlinx.android.synthetic.main.spec_product_listitem.view.*
 import retrofit2.Call
 import retrofit2.Response
 
+@Suppress("DEPRECATION")
 class HomeActivity : AppCompatActivity() {
-    private var productRequirement = ProductRequirement()
     private lateinit var jsonApi: AnApi
 
     @SuppressLint("InflateParams")
@@ -46,8 +46,10 @@ class HomeActivity : AppCompatActivity() {
             subPlotNameSelected != null)   {
             plotName_TV.text = "$groupPlotNameSelected  $mainPlotNameSelected"
 
-            var myDrawable : Drawable = getResources().getDrawable(R.drawable.ic_baseline_more_vert_24);
-            search_btn.setImageDrawable(myDrawable)
+            val icon : Drawable = resources.getDrawable(R.drawable.ic_baseline_info_24_white);
+            val background = resources.getDrawable(R.drawable.shape_homeactivity_header_bg)
+            search_btn.setImageDrawable(icon)
+            search_btn.background = background
             search_btn.setOnClickListener {
 
             }
@@ -114,6 +116,7 @@ class HomeActivity : AppCompatActivity() {
         calulate_BTN.setOnClickListener {
             val childCount = parent_linear_layout.childCount
             val mainSpecChildCount = productTypeTable.childCount
+            val productRequirement = ProductRequirement()
 
             for (i in 0 until mainSpecChildCount){
                 val thisChild = productTypeTable.getChildAt(i)
