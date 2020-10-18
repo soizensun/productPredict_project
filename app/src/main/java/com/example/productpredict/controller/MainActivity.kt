@@ -135,14 +135,16 @@ class MainActivity : AppCompatActivity() {
 
         confirmPlotInput_BTN.setOnClickListener{
             val childCount = surveyTable.childCount
-            Log.i("resault", "$groupPlotNameSelected $mainPlotNameSelected $subPlotNameSelected $childCount")
 
             val gardenIdList = ArrayList<String>()
+            val gardenDetailList = ArrayList<String>()
             for (i in 0 until childCount){
                 val thisChild = surveyTable.getChildAt(i)
                 if(thisChild.flagTV.text == "select"){
-                    var tmpGardenId = thisChild.gardenIdTV.text.toString()
+                    val tmpGardenId = thisChild.gardenIdTV.text.toString()
+                    val tmpGardenDetail = thisChild.surveyDateTV.text.toString()
                     gardenIdList.add(tmpGardenId)
+                    gardenDetailList.add(tmpGardenDetail)
                 }
             }
 
@@ -155,6 +157,7 @@ class MainActivity : AppCompatActivity() {
                     putExtra("mainPlotNameSelected", mainPlotNameSelected)
                     putExtra("subPlotNameSelected", subPlotNameSelected)
                     putExtra("gardenIdList", gardenIdList)
+                    putExtra("gardenDetailList", gardenDetailList)
                 }
                 startActivity(intent)
             }

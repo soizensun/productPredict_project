@@ -1,6 +1,7 @@
 package com.example.productpredict.controller
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -17,10 +18,10 @@ import com.example.productpredict.httpController.AnApi
 import com.example.productpredict.httpController.RetrofitClient
 import com.example.productpredict.model.*
 import es.dmoral.toasty.Toasty
-import kotlinx.android.synthetic.main.a_plot_listitem.view.*
 import kotlinx.android.synthetic.main.a_plot_listitem.view.flagTV
 import kotlinx.android.synthetic.main.a_plot_listitem.view.surveyDateTV
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.dialog_view.view.*
 import kotlinx.android.synthetic.main.spec_product_listitem.view.*
 import retrofit2.Call
 import retrofit2.Response
@@ -40,6 +41,8 @@ class HomeActivity : AppCompatActivity() {
         val mainPlotNameSelected  = intent.getStringExtra("mainPlotNameSelected")
         val subPlotNameSelected  = intent.getStringExtra("subPlotNameSelected")
         val gardenIdList  = intent.getStringArrayListExtra("gardenIdList")
+        val gardenDetailList  = intent.getStringArrayListExtra("gardenDetailList")
+
 
         if (groupPlotNameSelected != null &&
             mainPlotNameSelected != null &&
@@ -50,13 +53,43 @@ class HomeActivity : AppCompatActivity() {
             val background = resources.getDrawable(R.drawable.shape_homeactivity_header_bg)
             search_btn.setImageDrawable(icon)
             search_btn.background = background
-            search_btn.setOnClickListener {
 
+            fun showDialog() {
+                val dialogBuilder = AlertDialog.Builder(this)
+                val view = View.inflate(this, R.layout.dialog_view, null)
+                dialogBuilder.setView(view)
+
+                val dialog = dialogBuilder.create()
+                dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+                dialog.show()
+
+                view.plotGroup_TV.text = groupPlotNameSelected
+                view.mainPlot_TV.text = mainPlotNameSelected
+                view.subMainPlot_TV.text = subPlotNameSelected
+//                view.surveyData_TV.text = gardenDetailList.toString()
+
+                val inflater: LayoutInflater  = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                for (i in gardenDetailList){
+                    val rowView = inflater.inflate(R.layout.spec_product_listitem, null)
+                    Log.i("aaa", i)
+
+                    rowView.surveyDateTV.text = i
+                    view.surveyTableDialogView.addView(rowView)
+                }
+
+                view.close_BTN.setOnClickListener { dialog.dismiss() }
+                view.changePlot_BTN.setOnClickListener { startActivity(Intent(this, MainActivity::class.java)) }
             }
+
+            plotInput.setOnClickListener { showDialog() }
+            search_btn.setOnClickListener { showDialog() }
         }
         else {
             plotName_TV.text = "เลือกแปลง"
             search_btn.setOnClickListener {
+                startActivity(Intent(this, MainActivity::class.java))
+            }
+            plotInput.setOnClickListener {
                 startActivity(Intent(this, MainActivity::class.java))
             }
         }
@@ -67,11 +100,6 @@ class HomeActivity : AppCompatActivity() {
             parent_linear_layout.addView(rowView, parent_linear_layout.childCount - 1)
         }
 
-        plotInput.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
-        }
-
-
         jsonApi.spec.enqueue(object: retrofit2.Callback<SpecProduct> {
             override fun onFailure(call: Call<SpecProduct>, t: Throwable) {}
             override fun onResponse(call: Call<SpecProduct>, response: Response<SpecProduct>) {
@@ -81,6 +109,7 @@ class HomeActivity : AppCompatActivity() {
                     if(i == 0 || i == 1 || i == 2) specTypeList.add(SpecTypeRenderModel(response.body()!!.spec_id[i], response.body()!!.type_name[i], "select"))
                     else specTypeList.add(SpecTypeRenderModel(response.body()!!.spec_id[i], response.body()!!.type_name[i], "unselect"))
                 }
+
                 val inflater: LayoutInflater  = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
                 for (i in specTypeList){
                     val rowView = inflater.inflate(R.layout.spec_product_listitem, null)
@@ -91,7 +120,7 @@ class HomeActivity : AppCompatActivity() {
                     rowView.specIdTV.text = i.spec_id
                     rowView.flagTV.text = i.selectedFlag
                     productTypeTable.addView(rowView, productTypeTable.childCount)
-                    if (rowView.flagTV.text == "unselect" ) {
+                    if (rowView.flagTV.text == "unselect") {
                         rowView.surveyDateTV.background = normalBackground
                         rowView.surveyDateTV.setTextColor(Color.parseColor("#313131"))
                     } else{
@@ -99,7 +128,7 @@ class HomeActivity : AppCompatActivity() {
                         rowView.surveyDateTV.setTextColor(Color.parseColor("#FFFFFF"))
                     }
                     rowView.setOnClickListener{
-                        if (rowView.flagTV.text == "select" ) {
+                        if (rowView.flagTV.text == "select") {
                             rowView.surveyDateTV.background = normalBackground
                             rowView.flagTV.text = "unselect"
                             rowView.surveyDateTV.setTextColor(Color.parseColor("#313131"))
@@ -132,6 +161,7 @@ class HomeActivity : AppCompatActivity() {
                     val intent = Intent(this, ResultActivity::class.java)
                     intent.putExtra("gardenIdList", gardenIdList.toString())
                     intent.putExtra("mainSpecIdList", productRequirement.mainSpecIdList.toString())
+
                     startActivity(intent)
                 }
                 else if (childCount > 3){

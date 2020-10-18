@@ -1,7 +1,9 @@
 package com.example.productpredict.controller
 
 import ProductType
+import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -22,6 +24,7 @@ import kotlinx.android.synthetic.main.a_product_result_listitem.view.*
 import kotlinx.android.synthetic.main.a_product_result_listitem.view.allWeightTV
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_result.*
+import kotlinx.android.synthetic.main.dialog_view.view.*
 import retrofit2.Call
 import retrofit2.Response
 import javax.security.auth.callback.Callback
@@ -53,6 +56,11 @@ class ResultActivity : AppCompatActivity() {
         val dbhEndEndList = intent.getStringExtra("dbhEndEndList")
         val lengthStartList = intent.getStringExtra("lengthStartList")
         val lengthEndList = intent.getStringExtra("lengthEndList")
+
+//        val groupPlotNameSelected = intent.getStringExtra("groupPlotNameSelected")
+//        val mainPlotNameSelected  = intent.getStringExtra("mainPlotNameSelected")
+//        val subPlotNameSelected  = intent.getStringExtra("subPlotNameSelected")
+//        gardenDetailList  = intent.getStringArrayListExtra("gardenDetailList")
         
         if(dbhBaseStartList == null){
             tmpArray.add(gardenIdList)
@@ -85,8 +93,6 @@ class ResultActivity : AppCompatActivity() {
                 renderDataFromApi(apiParam, amountTrees)
             }
         }
-
-
     }
 
     private fun showToast(msg: String){
@@ -100,7 +106,29 @@ class ResultActivity : AppCompatActivity() {
                 if (response.isSuccessful){
                     val json = response.body()
                     val jsonSize = json!!.size()
-                    var plotDetail = json["name"].toString()
+                    val plotDetail = json["name"].toString()
+
+                    getPlotInfoBTN.setOnClickListener {
+                        val dialogBuilder = AlertDialog.Builder(this@ResultActivity)
+                        val view = View.inflate(this@ResultActivity , R.layout.dialog_view2, null)
+                        dialogBuilder.setView(view)
+
+                        val dialog = dialogBuilder.create()
+                        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+                        dialog.show()
+
+                        val plotDetail =  plotDetail.replace("\"", "")
+                        val plotGroup = plotDetail.split(" ")[0].replace("กลุ่มแปลง", "")
+                        val mainPlot = plotDetail.split(" ")[1].replace("แปลงหลัก", "")
+                        val subMainPlot = plotDetail.split(" ")[3]
+
+                        view.plotGroup_TV.text = plotGroup
+                        view.mainPlot_TV.text = mainPlot
+                        view.subMainPlot_TV.text = subMainPlot
+
+                        view.close_BTN.setOnClickListener { dialog.dismiss() }
+                    }
+
                     val treesNumber = json["trees"].toString()
                     for (i in 0..(jsonSize - 3)) {
                         val productType = gson.fromJson(json[i.toString()], ProductType::class.java)
@@ -144,7 +172,6 @@ class ResultActivity : AppCompatActivity() {
                                 }
                             }
                             priceTotalTV.text = ( "%.2f".format(totalPrice).toDouble() ).toString()
-
                         }
                         resultTable.addView(rowView, resultTable.childCount)
                     }

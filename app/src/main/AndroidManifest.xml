@@ -17,11 +17,13 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".controller.ResultActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".controller.HomeActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -30,7 +32,9 @@
         <activity
             android:name=".controller.MainActivity"
             android:label="เลือกแปลง"
-            android:parentActivityName=".controller.HomeActivity"></activity>
+            android:parentActivityName=".controller.HomeActivity"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>
