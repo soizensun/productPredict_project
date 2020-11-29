@@ -89,7 +89,6 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginBottom="30dp"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="match_parent"
@@ -102,6 +101,34 @@
                 android:textSize="16sp"/>
             <TextView
                 android:id="@+id/subMainPlot_TV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Easdf"
+                android:background="@drawable/shape_a_spec_product_list_bg"
+                android:textColor="@color/blackText1"
+                android:textSize="18sp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="30dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="จำนวนต้น"
+                android:textAlignment="center"
+                android:textColor="@color/blackText1"
+                android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/amountTrees_TV"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

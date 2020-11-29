@@ -158,7 +158,7 @@ class HomeActivity : AppCompatActivity() {
             }
             else{
                 if(childCount == 3){
-                    val intent = Intent(this, ResultActivity::class.java)
+                    val intent = Intent(this, ChooseTreeNumberActivity::class.java)
                     intent.putExtra("gardenIdList", gardenIdList.toString())
                     intent.putExtra("mainSpecIdList", productRequirement.mainSpecIdList.toString())
 
@@ -194,7 +194,7 @@ class HomeActivity : AppCompatActivity() {
                             productRequirement.addLengthEndList(length_end_value)
 
                             if (i == childCount - 2) {
-                                val intent = Intent(this, ResultActivity::class.java)
+                                val intent = Intent(this, ChooseTreeNumberActivity::class.java)
 
                                 intent.putExtra("gardenIdList", gardenIdList.toString())
                                 intent.putExtra("mainSpecIdList", productRequirement.mainSpecIdList.toString())

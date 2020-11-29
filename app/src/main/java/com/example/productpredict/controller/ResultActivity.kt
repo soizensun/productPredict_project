@@ -25,6 +25,11 @@ import kotlinx.android.synthetic.main.a_product_result_listitem.view.allWeightTV
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_result.*
 import kotlinx.android.synthetic.main.dialog_view.view.*
+import kotlinx.android.synthetic.main.dialog_view.view.close_BTN
+import kotlinx.android.synthetic.main.dialog_view.view.mainPlot_TV
+import kotlinx.android.synthetic.main.dialog_view.view.plotGroup_TV
+import kotlinx.android.synthetic.main.dialog_view.view.subMainPlot_TV
+import kotlinx.android.synthetic.main.dialog_view2.view.*
 import retrofit2.Call
 import retrofit2.Response
 import javax.security.auth.callback.Callback
@@ -35,7 +40,7 @@ class ResultActivity : AppCompatActivity() {
     private val retrofit = RetrofitClient.instance
     private val jsonApi = retrofit!!.create(AnApi::class.java)
     private var gson = Gson()
-    private var amountTrees: Float? = null
+//    private var amountTrees: Double = 12.00
     private var size1: Float? = null
     private var size2: Float? = null
     private var area: Float? = null
@@ -56,11 +61,7 @@ class ResultActivity : AppCompatActivity() {
         val dbhEndEndList = intent.getStringExtra("dbhEndEndList")
         val lengthStartList = intent.getStringExtra("lengthStartList")
         val lengthEndList = intent.getStringExtra("lengthEndList")
-
-//        val groupPlotNameSelected = intent.getStringExtra("groupPlotNameSelected")
-//        val mainPlotNameSelected  = intent.getStringExtra("mainPlotNameSelected")
-//        val subPlotNameSelected  = intent.getStringExtra("subPlotNameSelected")
-//        gardenDetailList  = intent.getStringArrayListExtra("gardenDetailList")
+        val amountTrees = intent.getStringExtra("amountTrees")
         
         if(dbhBaseStartList == null){
             tmpArray.add(gardenIdList)
@@ -78,28 +79,14 @@ class ResultActivity : AppCompatActivity() {
             tmpArray.add(lengthEndList)
         }
         apiParam = tmpArray.toString()
-        renderDataFromApi(apiParam, amountTrees)
-
-        getSizePlotBTN.setOnClickListener {
-            resultTable.removeViews(1, resultTable.childCount - 1)
-            size1 = size1ET.text.toString().toFloatOrNull()
-            size2 = size2ET.text.toString().toFloatOrNull()
-            area = areaET.text.toString().toFloatOrNull()
-
-            if (size1 == null || size2 == null || area == null)
-                Toasty.warning(this, "กรอกข้อมูลให้ครบถ้วน", Toast.LENGTH_SHORT, true).show()
-            else {
-                amountTrees =  (1600 / (size1!! * size2!!)) * area!!
-                renderDataFromApi(apiParam, amountTrees)
-            }
-        }
+        renderDataFromApi(apiParam, amountTrees.toDouble())
     }
 
     private fun showToast(msg: String){
         Toasty.warning(this, msg, Toast.LENGTH_SHORT, true).show()
     }
 
-    private fun renderDataFromApi(apiParam: String, amountTrees: Float?){
+    private fun renderDataFromApi(apiParam: String, amountTrees: Double?){
         jsonApi.getProducts(apiParam).enqueue(object: Callback, retrofit2.Callback<JsonObject>{
             override fun onFailure(call: Call<JsonObject>, t: Throwable) { Log.i("fail response success", t.toString()) }
             override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
@@ -125,6 +112,7 @@ class ResultActivity : AppCompatActivity() {
                         view.plotGroup_TV.text = plotGroup
                         view.mainPlot_TV.text = mainPlot
                         view.subMainPlot_TV.text = subMainPlot
+                        view.amountTrees_TV.text = amountTrees!!.toInt().toString()
 
                         view.close_BTN.setOnClickListener { dialog.dismiss() }
                     }
