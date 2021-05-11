@@ -5,6 +5,7 @@ import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface AnApi {
@@ -49,5 +50,12 @@ interface AnApi {
     subPlotName: String
   ): Call<SurveyDatePlotName>
 
+  @POST("project/eucapre/api_login.php")
+  fun verifyUser(
+    @Query("username")
+    username: String,
+    @Query("password")
+    password: String
+  ): Call<User>
 
 }

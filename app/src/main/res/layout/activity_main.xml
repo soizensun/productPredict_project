@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:text="เลือกกลุ่มเเปลง"
+                android:text="กลุ่มเเปลง"
                 android:textColor="@color/blackText1"
                 android:textSize="18dp" />
         </LinearLayout>
@@ -57,13 +57,24 @@
                 android:layout_marginBottom="0dp"
                 android:background="@drawable/shape_inner_layer_a_product_input_list_bg">
 
-                <Spinner
-                    android:id="@+id/groupPlot_SP"
+<!--                <Spinner-->
+<!--                    android:id="@+id/groupPlot_SP"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginLeft="15dp"-->
+<!--                    android:textColor="@color/blackText" />-->
+
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:id="@+id/groupPlot_SP"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="15dp"
-                    android:textColor="@color/blackText" />
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:hint="เลือกกลุ่มเเปลง"
+                    android:paddingRight="10dp"
+                    android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"/>
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
@@ -92,7 +103,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:text="เลือกแปลงหลัก"
+                android:text="แปลงหลัก"
                 android:textColor="@color/blackText1"
                 android:textSize="18dp" />
         </LinearLayout>
@@ -119,13 +130,23 @@
                 android:layout_marginBottom="0dp"
                 android:background="@drawable/shape_inner_layer_a_product_input_list_bg">
 
-                <Spinner
-                    android:id="@+id/mainPlot_SP"
+<!--                <Spinner-->
+<!--                    android:id="@+id/mainPlot_SP"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginLeft="15dp"-->
+<!--                    android:textColor="@color/blackText" />-->
+
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="15dp"
-                    android:textColor="@color/blackText" />
+                    android:id="@+id/mainPlot_SP"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:hint="เลือกเเปลงหลัก"
+                    android:paddingRight="10dp"
+                    android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"/>
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
@@ -154,7 +175,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:text="เลือกแปลงย่อย"
+                android:text="แปลงย่อย"
                 android:textColor="@color/blackText1"
                 android:textSize="18dp" />
         </LinearLayout>
@@ -181,13 +202,23 @@
                 android:layout_marginBottom="0dp"
                 android:background="@drawable/shape_inner_layer_a_product_input_list_bg">
 
-                <Spinner
-                    android:id="@+id/subPlot_SP"
+<!--                <Spinner-->
+<!--                    android:id="@+id/subPlot_SP"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginLeft="15dp"-->
+<!--                    android:textColor="@color/blackText" />-->
+
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="15dp"
-                    android:textColor="@color/blackText" />
+                    android:id="@+id/subPlot_SP"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:hint="เลือกเเปลงย่อย"
+                    android:paddingRight="10dp"
+                    android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"/>
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>

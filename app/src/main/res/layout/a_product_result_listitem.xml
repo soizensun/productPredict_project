@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:text="97"
                 android:textColor="@color/blackText1"
-                android:textSize="18dp"
+                android:textSize="17dp"
                 android:layout_gravity="center"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:text="ราคารวม"
                 android:textColor="@color/blackText1"
-                android:textSize="14dp"
+                android:textSize="18dp"
                 android:layout_gravity="center"/>
             <TextView
                 android:id="@+id/priceAllTV"
@@ -88,7 +88,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_marginLeft="7dp"
             android:orientation="vertical"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="4dp">
@@ -98,11 +97,11 @@
                 android:orientation="horizontal"
                 android:layout_weight="1">
                 <TextView
-                    android:layout_width="120dp"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="ปริมาตรไม้ตัวอย่าง"
                     android:textColor="@color/blackText1"
-                    android:textSize="15dp"
+                    android:textSize="18dp"
                     android:layout_gravity="center"/>
                 <TextView
                     android:id="@+id/productVolumeTV"
@@ -111,13 +110,13 @@
                     android:layout_height="wrap_content"
                     android:text="1.365"
                     android:textColor="@color/blackText1"
-                    android:textSize="16dp"
+                    android:textSize="19dp"
                     android:textStyle="bold"
                     android:layout_gravity="center"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ลูกบาศก์เมตร"
+                    android:text="ลบ.ม."
                     android:paddingLeft="12dp"
                     android:textColor="@color/blackText1"
                     android:textSize="15dp"
@@ -128,11 +127,11 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1">
                 <TextView
-                    android:layout_width="120dp"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="น้ำหนักไม้ตัวอย่าง"
                     android:textColor="@color/blackText1"
-                    android:textSize="15dp"
+                    android:textSize="18dp"
                     android:layout_gravity="center"/>
                 <TextView
                     android:id="@+id/productWeightTV"
@@ -141,7 +140,7 @@
                     android:layout_height="wrap_content"
                     android:text="1.569"
                     android:textColor="@color/blackText1"
-                    android:textSize="16dp"
+                    android:textSize="19dp"
                     android:textStyle="bold"
                     android:layout_gravity="center"/>
                 <TextView
@@ -168,7 +167,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_marginLeft="7dp"
             android:orientation="horizontal"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="4dp">
@@ -182,11 +180,11 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1">
                     <TextView
-                        android:layout_width="120dp"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:text="ปริมาตร"
                         android:textColor="@color/blackText1"
-                        android:textSize="15dp"
+                        android:textSize="18dp"
                         android:layout_gravity="center"/>
                     <TextView
                         android:id="@+id/allVolumeTV"
@@ -194,14 +192,14 @@
                         android:layout_height="wrap_content"
                         android:text="-"
                         android:textColor="@color/blackText1"
-                        android:textSize="16dp"
+                        android:textSize="19dp"
                         android:textStyle="bold"
                         android:gravity="end"
                         android:layout_gravity="center"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ลูกบาก์ศเมตร"
+                        android:text="ลบ.ม."
                         android:paddingLeft="12dp"
                         android:textColor="@color/blackText1"
                         android:textSize="15dp"
@@ -212,11 +210,11 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1">
                     <TextView
-                        android:layout_width="120dp"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:text="มวล"
                         android:textColor="@color/blackText1"
-                        android:textSize="15dp"
+                        android:textSize="18dp"
                         android:layout_gravity="center"/>
                     <TextView
                         android:id="@+id/allWeightTV"
@@ -224,7 +222,7 @@
                         android:layout_height="wrap_content"
                         android:text="-"
                         android:textColor="@color/blackText1"
-                        android:textSize="16dp"
+                        android:textSize="19dp"
                         android:textStyle="bold"
                         android:gravity="end"
                         android:layout_gravity="center"/>

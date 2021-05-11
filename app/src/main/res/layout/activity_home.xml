@@ -8,21 +8,25 @@
 
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp">
+
         <LinearLayout
             android:id="@+id/topLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/shape_homeactivity_header2_bg"
             android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -46,6 +50,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:stretchColumns="1">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -57,6 +62,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="10dp">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -89,6 +95,7 @@
                             android:layout_toStartOf="@+id/search_btn"
                             android:layout_toLeftOf="@+id/search_btn"
                             android:background="@drawable/shape_white">
+
                             <TextView
                                 android:id="@+id/plotName_TV"
                                 android:layout_width="match_parent"
@@ -123,51 +130,53 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="18dp">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="ประเภทผลผลิตหลัก"
                             android:textColor="@color/blackText1"
-                            android:textSize="16dp"/>
+                            android:textSize="16dp" />
                     </RelativeLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
                         android:layout_marginLeft="8dp"
                         android:layout_marginRight="8dp"
-                        android:layout_marginBottom="20dp"
-                        >
+                        android:layout_marginBottom="20dp">
+
                         <androidx.core.widget.NestedScrollView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:fillViewport="true"
-                            android:scrollbars = "vertical"
                             android:fadeScrollbars="true"
-                            >
+                            android:fillViewport="true"
+                            android:scrollbars="vertical">
+
                             <TableLayout
                                 android:id="@+id/productTypeTable"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:stretchColumns="1">
-                            </TableLayout>
+                                android:stretchColumns="1"></TableLayout>
                         </androidx.core.widget.NestedScrollView>
                     </LinearLayout>
                 </LinearLayout>
 
                 <Button
-                    android:layout_marginRight="21dp"
-                    android:layout_marginLeft="21dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="16dp"
                     android:id="@+id/addField_BTN"
                     android:layout_width="155dp"
                     android:layout_height="60dp"
                     android:layout_gravity="center"
+                    android:layout_marginLeft="21dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="21dp"
+                    android:layout_marginBottom="16dp"
                     android:background="@drawable/shape_addmore_product_input_list_btn"
                     android:text="เพิ่มประเภทผลผลิต"
                     android:textColor="#FFF"
@@ -190,6 +199,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:rippleColor="@color/darkPurple" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/userStatusBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/lightGreen2"
+        android:clickable="true"
+        android:src="@drawable/ic_baseline_person_24"
+        app:backgroundTint="@color/lightGreen2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:rippleColor="@color/lightGreen2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

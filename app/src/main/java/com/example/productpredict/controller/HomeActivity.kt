@@ -8,6 +8,8 @@ import android.graphics.Color
 import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.preference.PreferenceManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -23,12 +25,16 @@ import kotlinx.android.synthetic.main.a_plot_listitem.view.surveyDateTV
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.dialog_view.view.*
 import kotlinx.android.synthetic.main.spec_product_listitem.view.*
+import kotlinx.android.synthetic.main.user_detail_dialog.*
 import retrofit2.Call
 import retrofit2.Response
+import kotlin.math.log
+import kotlin.system.exitProcess
 
 @Suppress("DEPRECATION")
 class HomeActivity : AppCompatActivity() {
     private lateinit var jsonApi: AnApi
+    private var doubleBackToExitPressedOnce = false
 
     @SuppressLint("InflateParams")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,12 +43,13 @@ class HomeActivity : AppCompatActivity() {
 
         jsonApi = RetrofitClient.instance!!.create(AnApi::class.java)
 
+
         val groupPlotNameSelected = intent.getStringExtra("groupPlotNameSelected")
         val mainPlotNameSelected  = intent.getStringExtra("mainPlotNameSelected")
         val subPlotNameSelected  = intent.getStringExtra("subPlotNameSelected")
         val gardenIdList  = intent.getStringArrayListExtra("gardenIdList")
         val gardenDetailList  = intent.getStringArrayListExtra("gardenDetailList")
-
+        val pref = PreferenceManager.getDefaultSharedPreferences(this)
 
         if (groupPlotNameSelected != null &&
             mainPlotNameSelected != null &&
@@ -71,7 +78,6 @@ class HomeActivity : AppCompatActivity() {
                 val inflater: LayoutInflater  = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
                 for (i in gardenDetailList){
                     val rowView = inflater.inflate(R.layout.spec_product_listitem, null)
-                    Log.i("aaa", i)
 
                     rowView.surveyDateTV.text = i
                     view.surveyTableDialogView.addView(rowView)
@@ -100,13 +106,33 @@ class HomeActivity : AppCompatActivity() {
             parent_linear_layout.addView(rowView, parent_linear_layout.childCount - 1)
         }
 
-        jsonApi.spec.enqueue(object: retrofit2.Callback<SpecProduct> {
-            override fun onFailure(call: Call<SpecProduct>, t: Throwable) {}
-            override fun onResponse(call: Call<SpecProduct>, response: Response<SpecProduct>) {
+        userStatusBTN.setOnClickListener {
+            val dialogBuilder = AlertDialog.Builder(this)
+            dialogBuilder.setView(View.inflate(this, R.layout.user_detail_dialog, null))
+            val dialog = dialogBuilder.create()
+            dialog.show()
+            pref.apply {
+                val user = getString("currentUser", "-")
+                dialog.currentUserTV.text = "ผู้ใช้ปัจจุบัน : $user"
+            }
+            dialog.logoutBTN.setOnClickListener {
+                val intent = Intent(this, LoginActivity::class.java)
+                val pref = PreferenceManager.getDefaultSharedPreferences(this)
+                val editor = pref.edit()
+                editor.putString("currentUser", "-").apply()
+                startActivity(intent)
+            }
+        }
 
+        jsonApi.spec.enqueue(object: retrofit2.Callback<SpecProduct> {
+            override fun onFailure(call: Call<SpecProduct>, t: Throwable) {
+                Toasty.error(this@HomeActivity, "กรุณาตรวจสอบอินเทอร์เน็ต", Toast.LENGTH_SHORT, true).show()
+            }
+            override fun onResponse(call: Call<SpecProduct>, response: Response<SpecProduct>) {
                 val specTypeList = ArrayList<SpecTypeRenderModel>()
+                Log.i("fff", response.body().toString())
                 for (i in 0 until response.body()?.spec_id!!.size) {
-                    if(i == 0 || i == 1 || i == 2) specTypeList.add(SpecTypeRenderModel(response.body()!!.spec_id[i], response.body()!!.type_name[i], "select"))
+                    if(response.body()!!.type_name[i] == "ไม้ 3 (ไม้ฟืน)" || response.body()!!.type_name[i] == "ไม้ 2"  || response.body()!!.type_name[i] == "ไม้ 1") specTypeList.add(SpecTypeRenderModel(response.body()!!.spec_id[i], response.body()!!.type_name[i], "select"))
                     else specTypeList.add(SpecTypeRenderModel(response.body()!!.spec_id[i], response.body()!!.type_name[i], "unselect"))
                 }
 
@@ -217,5 +243,19 @@ class HomeActivity : AppCompatActivity() {
 
     fun onDelete(v: View) {
         parent_linear_layout.removeView(v.parent as View)
+    }
+
+
+
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            moveTaskToBack(true);
+            exitProcess(-1)
+        }
+
+        this.doubleBackToExitPressedOnce = true
+        Toasty.info(this, "กด \"ย้อนกลับ\" อีกครั้งเพื่อออก ", Toast.LENGTH_SHORT).show()
+
+        Handler().postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
     }
 }
