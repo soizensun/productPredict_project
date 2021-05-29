@@ -13,10 +13,12 @@ interface AnApi {
   @get:GET("project/eucapre/api_plot.php/")
   val plots: Call<List<Plot>>
 
-  @get:GET("project/eucapre/sel_spec.php")
+  //รายการการใช้ประโยชน์
+  @get:GET("eucapre/sel_spec.php")
   val spec: Call<SpecProduct>
 
-  @GET("project/eucapre/utilize5.php")
+  //คำนวณ
+  @GET("eucapre/utilize_mobile.php")
   fun getProducts(
     @Query("p")
     productSpec: String
@@ -24,30 +26,33 @@ interface AnApi {
 
   // get group name plot
   //รายชื่อกลุ่มแปลง
-  @get:GET("project/eucapre/sel_groupname.php")
+  @get:GET("eucapre/get_group.php")
   val groupPlotName: Call<GroupPlotName>
 
-  @GET("project/eucapre/sel_mainname.php")
+  //รายชื่อแปลงหลัก
+  @GET("eucapre/get_main.php")
   fun mainPlotName(
-    @Query("x")
+    @Query("group_name")
     groupPlotName: String
   ): Call<MainPlotName>
 
-  @GET("project/eucapre/sel_sub.php")
+  //รายชื่อแปลงย่อย
+  @GET("eucapre/get_sub.php")
   fun subPlotName(
-    @Query("x")
+    @Query("group_name")
     groupPlotName: String,
-    @Query("y")
+    @Query("main_name")
     mainPlotName: String
   ): Call<SubPlotName>
 
-  @GET("project/eucapre/sel_date.php")
+  //รายการวันที่สำรวจ
+  @GET("eucapre/get_sub.php")
   fun surveyDatePlotName(
-    @Query("x")
+    @Query("group_name")
     groupPlotName: String,
-    @Query("y")
+    @Query("main_name")
     mainPlotName: String,
-    @Query("z")
+    @Query("sub_id")
     subPlotName: String
   ): Call<SurveyDatePlotName>
 
