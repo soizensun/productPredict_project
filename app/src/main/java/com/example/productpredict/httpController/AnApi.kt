@@ -56,7 +56,7 @@ interface AnApi {
     subPlotName: String
   ): Call<SurveyDatePlotName>
 
-  @POST("project/eucapre/api_login.php")
+  @POST("eucapre/api_login.php")
   fun verifyUser(
     @Query("username")
     username: String,
