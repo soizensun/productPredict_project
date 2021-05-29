@@ -23,6 +23,7 @@ interface AnApi {
   ): Call<JsonObject>
 
   // get group name plot
+  //รายชื่อกลุ่มแปลง
   @get:GET("project/eucapre/sel_groupname.php")
   val groupPlotName: Call<GroupPlotName>
 

@@ -140,7 +140,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="ประเภทผลผลิตหลัก"
+                            android:text="ประเภทผลิตภัณฑ์หลัก"
                             android:textColor="@color/blackText1"
                             android:textSize="16dp" />
                     </RelativeLayout>
@@ -178,7 +178,7 @@
                     android:layout_marginRight="21dp"
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/shape_addmore_product_input_list_btn"
-                    android:text="เพิ่มประเภทผลผลิต"
+                    android:text="เพิ่มประเภทผลิตภัณฑ์"
                     android:textColor="#FFF"
                     android:textSize="17dp" />
             </TableLayout>

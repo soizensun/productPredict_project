@@ -51,7 +51,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="กรณีรู้จำนวนต้นที่แน่นอน"
+                    android:text="กรณีทราบจำนวนต้น"
                     android:textColor="@color/blackText1"
                     android:textSize="18dp" />
             </LinearLayout>
@@ -174,7 +174,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="คำนวณจำนวนต้น"
+                    android:text="กรณีทราบพื้นที่ และ ระยะปลูก"
                     android:textColor="@color/blackText1"
                     android:textSize="18dp" />
             </LinearLayout>

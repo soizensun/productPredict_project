@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">productPredict</string>
+    <string name="app_name">Eucapre</string>
     <string-array name="productKind">
         <item>ไม้หนึ่ง</item>
         <item>ไม้รวม</item>
