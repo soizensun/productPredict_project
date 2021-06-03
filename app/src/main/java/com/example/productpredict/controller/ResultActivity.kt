@@ -42,56 +42,37 @@ class ResultActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
 
-        val tmpArray = arrayListOf<String>()
-
-        val gardenIdList = intent.getStringExtra("gardenIdList")
-        val mainSpecIdList = intent.getStringExtra("mainSpecIdList")
-        val moreSpecNameList = intent.getStringExtra("moreSpecNameList")
-        val dbhBaseStartList = intent.getStringExtra("dbhBaseStartList")
-        val dbhBaseEndList = intent.getStringExtra("dbhBaseEndList")
-        val dbhEndStartList = intent.getStringExtra("dbhEndStartList")
-        val dbhEndEndList = intent.getStringExtra("dbhEndEndList")
-        val lengthStartList = intent.getStringExtra("lengthStartList")
-        val lengthEndList = intent.getStringExtra("lengthEndList")
+        val apiParam = intent.getStringExtra("apiParam")
         val amountTrees = intent.getStringExtra("amountTrees")
+        Log.i("data", amountTrees)
+        val flag = intent.getStringExtra("flag")
+        Log.i("data", flag)
+
+        renderDataFromApi(apiParam, amountTrees.toDouble(), flag)
 
         backToHomeBTN.setOnClickListener{
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
-        
-        if(dbhBaseStartList == null){
-            tmpArray.add(gardenIdList)
-            tmpArray.add(mainSpecIdList)
-        }
-        else {
-            tmpArray.add(gardenIdList)
-            tmpArray.add(mainSpecIdList)
-            tmpArray.add(moreSpecNameList)
-            tmpArray.add(dbhBaseStartList)
-            tmpArray.add(dbhBaseEndList)
-            tmpArray.add(dbhEndStartList)
-            tmpArray.add(dbhEndEndList)
-            tmpArray.add(lengthStartList)
-            tmpArray.add(lengthEndList)
-        }
-        apiParam = tmpArray.toString()
-        renderDataFromApi(apiParam, amountTrees.toDouble())
     }
-
 
     private fun showToast(msg: String){
         Toasty.warning(this, msg, Toast.LENGTH_SHORT, true).show()
     }
 
 
-    private fun renderDataFromApi(apiParam: String, amountTrees: Double?){
+    private fun renderDataFromApi(
+        apiParam: String,
+        amountTrees: Double?,
+        flag: String?
+    ){
         val formatter = DecimalFormat("#,###,###.##")
         jsonApi.getProducts(apiParam).enqueue(object: Callback, retrofit2.Callback<JsonObject>{
             override fun onFailure(call: Call<JsonObject>, t: Throwable) { Log.i("fail response success", t.toString()) }
             override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
                 if (response.isSuccessful){
                     val json = response.body()
+                    Log.i("tt", json.toString())
                     val jsonSize = json!!.size()
                     val plotDetail = json["name"].toString()
 
@@ -118,8 +99,10 @@ class ResultActivity : AppCompatActivity() {
                     }
 
                     val treesNumber = json["trees"].toString()
+                    val aliveTressNumber = json["alive_trees"].toString()
                     var totalMass = 0.0
-                    for (i in 0..(jsonSize - 3)) {
+
+                    for (i in 0..(jsonSize - 8)) {
                         val productType = gson.fromJson(json[i.toString()], ProductType::class.java)
                         val inflater : LayoutInflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
                         val rowView = inflater.inflate(R.layout.a_product_result_listitem, null)
@@ -131,16 +114,21 @@ class ResultActivity : AppCompatActivity() {
                         rowView.productWeightTV.text = ( formatter.format(productType.weight.toDouble() )).toString()
 
                         if(amountTrees != null){
-                            rowView.allVolumeTV.text = ( formatter.format( ( productType.volume / Integer.parseInt(treesNumber) ) * amountTrees ) ).toString()
-                            rowView.allWeightTV.text = ( formatter.format( ( ( productType.weight / Integer.parseInt(treesNumber) ) * amountTrees ) / 1000 ) ).toString()
+                            var div = 1.00
+                            if(flag == "totalTreesChoice"){
+                                div = Integer.parseInt(aliveTressNumber).toDouble()
+                            }
+                            if(flag == "spaceAndAreaChoice"){
+                                div = Integer.parseInt(treesNumber).toDouble()
+                            }
 
-                            totalMass += ( ( productType.weight / Integer.parseInt(treesNumber) ) * amountTrees ) / 1000
-
+                            rowView.allVolumeTV.text = ( formatter.format( ( productType.volume / div ) * amountTrees ) ).toString()
+                            rowView.allWeightTV.text = ( formatter.format( ( ( productType.weight / div ) * amountTrees ) / 1000 ) ).toString()
+                            totalMass += ( ( productType.weight / div ) * amountTrees ) / 1000
                         }
 
                         rowView.calulatePriceBTN.setOnClickListener {
                             var totalPrice = 0.0
-
                             if(amountTrees != null){
                                 var allWeight : Float? = null
                                 val aPrice = rowView.priceET.text.toString().toFloatOrNull()

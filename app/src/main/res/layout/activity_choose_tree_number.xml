@@ -44,14 +44,22 @@
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="11dp"
-                android:layout_marginLeft="11dp">
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="11dp"
+                android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="กรณีทราบจำนวนต้น"
+                    android:text="วิธีที่ 1"
+                    android:textColor="@color/blackText1"
+                    android:textSize="18dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ใช้จำนวนต้นที่นับจริงในแปลง"
                     android:textColor="@color/blackText1"
                     android:textSize="18dp" />
             </LinearLayout>
@@ -167,14 +175,22 @@
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="11dp"
-                android:layout_marginLeft="11dp">
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="11dp"
+                android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="กรณีทราบพื้นที่ และ ระยะปลูก"
+                    android:text="วิธีที่ 2"
+                    android:textColor="@color/blackText1"
+                    android:textSize="18dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="คำนวณจากระยะปลูก และพื้นที่"
                     android:textColor="@color/blackText1"
                     android:textSize="18dp" />
             </LinearLayout>
@@ -299,7 +315,7 @@
                             android:id="@+id/d"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="พื่นที่ :"
+                            android:text="พื้นที่ :"
                             android:textColor="@color/blackText1"
                             android:textSize="15dp" />
                     </LinearLayout>
@@ -346,6 +362,32 @@
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="18dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="* การคำนวณผลผลิต จะใช้วิธีที่ 1 เป็นหลัก"
+                    android:textColor="@color/blackText1"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="หากต้องการใช้วิธีที่ 2 ให้ลบค่าในช่องจำนวนต้นออก"
+                    android:textColor="@color/blackText1"
+                    android:textSize="16dp" />
+            </LinearLayout>
+
         </LinearLayout>
 
         <Button

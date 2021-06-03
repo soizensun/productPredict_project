@@ -102,7 +102,9 @@ class MainActivity : AppCompatActivity() {
                                                         override fun onFailure(call: Call<SubPlotName>, t: Throwable) {}
                                                         override fun onResponse(call: Call<SubPlotName>, response: Response<SubPlotName>) {
                                                             val subPlotNameList = response.body() as SubPlotName
+
                                                             val options  = subPlotNameList.sub_id
+                                                            Log.i("t", options.toString())
                                                             subPlot_SP.setOnClickListener{
                                                                 val dialogBuilder = AlertDialog.Builder(this@MainActivity)
                                                                 dialogBuilder.setView(View.inflate(this@MainActivity, R.layout.search_spinner_dialog, null))
@@ -126,6 +128,7 @@ class MainActivity : AppCompatActivity() {
                                                                             @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
                                                                             override fun onResponse(call: Call<SurveyDatePlotName>, response: Response<SurveyDatePlotName>) {
                                                                                 val surveyDateList = ArrayList<SurveyDataRenderModel>()
+                                                                                Log.i("ttt" , response.body().toString())
                                                                                 for (i in 0 until response.body()?.date!!.size) {
                                                                                     surveyDateList.add(SurveyDataRenderModel(response.body()!!.date[i], response.body()!!.garden_id[i]))
                                                                                 }
@@ -292,7 +295,7 @@ class MainActivity : AppCompatActivity() {
                 if(thisChild.flagTV.text == "select"){
                     val tmpGardenId = thisChild.gardenIdTV.text.toString()
                     val tmpGardenDetail = thisChild.surveyDateTV.text.toString()
-                    gardenIdList.add(tmpGardenId)
+                    gardenIdList.add("\"" + tmpGardenId + "\"")
                     gardenDetailList.add(tmpGardenDetail)
                 }
             }

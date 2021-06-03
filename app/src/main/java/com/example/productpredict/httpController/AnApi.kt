@@ -46,7 +46,7 @@ interface AnApi {
   ): Call<SubPlotName>
 
   //รายการวันที่สำรวจ
-  @GET("eucapre/get_sub.php")
+  @GET("eucapre/get_plot.php")
   fun surveyDatePlotName(
     @Query("group_name")
     groupPlotName: String,

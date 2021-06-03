@@ -13,7 +13,7 @@
         android:layout_height="60dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:layout_marginBottom="212dp"
+        android:layout_marginBottom="280dp"
         android:background="@drawable/shape_inner_layer_a_product_input_list_bg"
         android:text="login"
         android:textColor="@color/blackText1"
@@ -124,6 +124,6 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginButton"
-        app:layout_constraintVertical_bias="0.389" />
+        app:layout_constraintVertical_bias="0.938" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -43,7 +43,6 @@ class HomeActivity : AppCompatActivity() {
 
         jsonApi = RetrofitClient.instance!!.create(AnApi::class.java)
 
-
         val groupPlotNameSelected = intent.getStringExtra("groupPlotNameSelected")
         val mainPlotNameSelected  = intent.getStringExtra("mainPlotNameSelected")
         val subPlotNameSelected  = intent.getStringExtra("subPlotNameSelected")
@@ -244,8 +243,6 @@ class HomeActivity : AppCompatActivity() {
     fun onDelete(v: View) {
         parent_linear_layout.removeView(v.parent as View)
     }
-
-
 
     override fun onBackPressed() {
         if (doubleBackToExitPressedOnce) {
